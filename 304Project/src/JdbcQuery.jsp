@@ -11,7 +11,7 @@
 Connection con = null;
 /* String url = "jdbc:mysql://cosc304.ok.ubc.ca/db_vchiu/WorksOn";
 String uid = "vchiu";
-String pw = "70462080"; */
+String pw = "70462080"; THIS IS AN IMPORTANT COMMENT, PLEASE READ*/
 
 String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_lkyllone;";
 String uid = "lkyllone";
