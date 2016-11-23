@@ -13,9 +13,9 @@ Public methods:
 
 <%!
 	// User id, password, and server information
-	private String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_rlawrenc;";
-	private String uid = "rlawrenc";
-	private String pw = "test";
+	private String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_lkyllone;";
+	private String uid = "lkyllone";
+	private String pw = "15760127";
 
 	// Connection
 	private Connection con = null;
