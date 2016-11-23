@@ -16,9 +16,14 @@ public class LoadData
 	
 	public static void loadData() throws Exception
 	{		
-		String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_rlawrenc;";
-		String uid = "rlawrenc";
-		String pw = "test";
+		// TODO: Fill-in
+//		String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=<YOUR USER ID>;";
+//		String uid = "<YOUR USER ID>";
+//		String pw = "<YOUR PASSWORD>";
+		
+		String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_vchiu;";
+		String uid = "vchiu";
+		String pw = "70462080";
 		
 		System.out.println("Connecting to database.");
 
@@ -39,7 +44,7 @@ public class LoadData
 	            String command = scanner.next();
 	            if (command.trim().equals(""))
 	                continue;
-	          //  System.out.println(command);        // Uncomment if want to see commands executed
+	            System.out.println(command);        // Uncomment if want to see commands executed
 	            try
 	            {
 	            	stmt.execute(command);
@@ -50,8 +55,6 @@ public class LoadData
 	            }
 	        }	 
 	        scanner.close();
-	        
-	        System.out.println("Database loaded.");
 	    }
 	    catch (Exception e)
 	    {
