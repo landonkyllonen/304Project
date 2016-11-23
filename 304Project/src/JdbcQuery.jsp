@@ -9,7 +9,8 @@
 
 <% 
 Connection con = null;
-/* String url = "jdbc:mysql://cosc304.ok.ubc.ca/db_vchiu/WorksOn";
+
+/*String url = "jdbc:mysql://cosc304.ok.ubc.ca/db_vchiu/WorksOn";
 String uid = "vchiu";
 String pw = "70462080"; THIS IS AN IMPORTANT COMMENT, PLEASE READ*/
 
