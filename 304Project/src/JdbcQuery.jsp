@@ -13,9 +13,9 @@ Connection con = null;
 String uid = "vchiu";
 String pw = "70462080"; */
 
-String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_vchiu;";
-String uid = "vchiu";
-String pw = "70462080";
+String url = "jdbc:sqlserver://sql04.ok.ubc.ca:1433;DatabaseName=db_lkyllone;";
+String uid = "lkyllone";
+String pw = "15760127";
 
 
 try {	

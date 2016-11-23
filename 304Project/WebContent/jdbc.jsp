@@ -10,6 +10,7 @@ Public methods:
 -->
 
 <%@ page import="java.sql.*"%>
+<%@ page import="com.microsoft.sqlserver.jdbc.SQLServerDriver" %>
 
 <%!
 	// User id, password, and server information
@@ -24,6 +25,11 @@ Public methods:
 <%!
 	public void getConnection() throws SQLException 
 	{
+		try{
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		con = DriverManager.getConnection(url, uid, pw);
 	}
    
