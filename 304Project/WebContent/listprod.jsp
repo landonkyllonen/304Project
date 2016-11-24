@@ -13,6 +13,18 @@
 
 <%@ include file="header.jsp" %>
 
+<form method="get" action="login.jsp">
+  <p align="right">
+  <input type="submit" value="Log In">
+  </p>
+  </form>
+  <form method="get" action="register.jsp">
+  <p align="right">
+  <input type="reset" value="Register">
+  </p>
+  </form>
+  
+
 <h2>Browse Products By Category and Search by Product Name:</h2>
 
 <form method="get" action="listprod.jsp">
@@ -64,6 +76,8 @@ colors.put("Seafood", "#FF66CC");
 
 <%
 	// Get product name to search for
+
+	
 String name = request.getParameter("productName");
 String category = request.getParameter("categoryName");
 
