@@ -8,6 +8,11 @@
 <head>
 <title>Ray's Grocery</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<style>
+.redtext {
+        color: red;
+}
+</style>
 </head>
 <body>
 
@@ -15,37 +20,96 @@
 
 
 <%
-//Try to get login info, if we can, display link to profile, if not, 
-//make login elements visible.
+//Try to get login info, 
 String username = request.getParameter("username");
 String password = request.getParameter("password");
-String elements="";
+
+
 if(username!=null){
-	elements = "";
+	
+}
+
+//if logged in, display link to profile, else, 
+//make login elements visible.
+String elements="";
+if(username!=null&&password!=null){
+	//Verify details
+	getConnection();
+	                		
+    String sql = "SELECT * FROM User WHERE userID = ? AND password = ?";	
+				      
+    con = DriverManager.getConnection(url, uid, pw);
+   	PreparedStatement pstmt = con.prepareStatement(sql);
+   	pstmt.setString(1, username);
+   	pstmt.setString(2, password);
+   	ResultSet rst = pstmt.executeQuery();
+    
+   	//If user/pass combo doesn't exist
+   	if (!rst.isBeforeFirst() ) {   
+   					//Error message
+   	    elements += "<div align=\"right\">" +
+						"<h3 class=\"redtext\">Wrong username or password</h3>"+
+					"</div>"+
+					"<a href=\"profile.jsp?username=" + username +
+					"\">View Profile</a>"+
+							
+					//Login fields
+					"<form method=\"get\" action=\"listprod.jsp\">"+
+					"<div align=\"right\">"+
+						"<pre>Username    Password   </pre>"+
+					"</div>"+
+
+					"<p align=\"right\">"+
+						"<input type=\"text\" name=\"username\" size=\"10\">"+
+						"<input type=\"text\" name=\"password\" size=\"10\">"+
+					"</p>"+
+
+					"<p align=\"right\">"+
+						"<input type=\"submit\" value=\"Log In\">"+
+					"</p>"+
+				"</form>"+
+
+				"<form method=\"get\" action=\"register.jsp\">"+
+					"<p align=\"right\">"+
+						"<input type=\"reset\" value=\"Register\">"+
+					"</p>"+
+				"</form>";
+   	}else{			
+   					//Link to profile and greeting
+   		elements += "<div align=\"right\">" +
+						"<h3>Hi, "+username+"!</h3>"+
+					"</div>"+
+					"<a href=\"profile.jsp?username=" + username +
+					"\">View Profile</a>";
+   	}
+   	
+	out.print(elements);
+	
 }else{
 	elements += 
-"<form method=\"get\" action=\"listprod.jsp\">"+
-	"<div align=\"right\">"+
-		"<pre>Username    Password   </pre>"+
-	"</div>"+
+			//Login fields
+	"<form method=\"get\" action=\"listprod.jsp\">"+
+		"<div align=\"right\">"+
+			"<pre>Username    Password   </pre>"+
+		"</div>"+
 
-	"<p align=\"right\">"+
-		"<input type=\"text\" name=\"username\" size=\"10\">"+
-		"<input type=\"text\" name=\"password\" size=\"10\">"+
-	"</p>"+
+		"<p align=\"right\">"+
+			"<input type=\"text\" name=\"username\" size=\"10\">"+
+			"<input type=\"text\" name=\"password\" size=\"10\">"+
+		"</p>"+
 
-	"<p align=\"right\">"+
-		"<input type=\"submit\" value=\"Log In\">"+
-	"</p>"+
-"</form>"+
+		"<p align=\"right\">"+
+			"<input type=\"submit\" value=\"Log In\">"+
+		"</p>"+
+	"</form>"+
 
-"<form method=\"get\" action=\"register.jsp\">"+
-	"<p align=\"right\">"+
-		"<input type=\"reset\" value=\"Register\">"+
-	"</p>"+
-"</form>";
+	"<form method=\"get\" action=\"register.jsp\">"+
+		"<p align=\"right\">"+
+			"<input type=\"reset\" value=\"Register\">"+
+		"</p>"+
+	"</form>";
 
-out.print(elements);
+	out.print(elements);
 }
 %>
 
