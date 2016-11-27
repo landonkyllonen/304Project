@@ -1,38 +1,97 @@
+<%@ page import="java.sql.*" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
+<%@ include file="jdbc.jsp" %>
+
+<html>
+<head>
+<title>TSLRG</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<style>
+   .container {
+        width: 500px;
+        clear: both;
+    }
+    .container input {
+        width: 100%;
+        clear: both;
+    }
+.center-div
+{
+     margin: 0 auto;
+     width: 250px; 
+}
+.redtext {
+        color: red;
+}
+</style>
+</head>
+<body>
+
+<%@ include file="header.jsp" %>
+
+<div class="form">
+      
+      <div class="center-div">
+        <div id="signup">   
+          <h1>Register for Free</h1>
+          
+          <form action="listprod.jsp" method="get">
+          
+          <div class="container">
+            <div class="container">
+              <label>
+                First Name<span class="req">*</span>
+              </label>
+              <input type="text" required autocomplete="off" name="fn" />
+            </div>
+        
+            <div class="container">
+              <label>
+                Last Name<span class="req">*</span>
+              </label>
+              <input type="text"required autocomplete="off" name="ln"/>
+            </div>
+          </div>
+
+          <div class="container" >
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off" name="email"/>
+          </div>
+          
+          <div class="container">
+            <label>
+              Create Your Username<span class="req">*</span>
+            </label>
+            <input type="text"required autocomplete="off" name="username"/>
+          </div>
+          
+          <div class="container">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off" name="password"/>
+          </div>
+          
+          <button type="submit" class="button button-block">Get Started</button>
+          
+          </form>
+
+        </div>
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+
 <%
-// Get the current list of products
-@SuppressWarnings({"unchecked"})
-HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Object>>) session.getAttribute("productList");
+//Try to create a user with these details, if conflicts, notify user, else
+//return to listprod as logged in.
 
-if (productList == null)
-{	// No products currently in list.  Create a list.
-	productList = new HashMap<String, ArrayList<Object>>();
-}
-
-// Add new product selected
-// Get product information
-String id = request.getParameter("id");
-String name = request.getParameter("name");
-String price = request.getParameter("price");
-Integer quantity = new Integer(1);
-
-// Store product information in an ArrayList
-ArrayList<Object> product = new ArrayList<Object>();
-product.add(id);
-product.add(name);
-product.add(price);
-product.add(quantity);
-
-// Update quantity if add same item to order again
-if (productList.containsKey(id))
-{	product = (ArrayList<Object>) productList.get(id);
-	int curAmount = ((Integer) product.get(3)).intValue();
-	product.set(3, new Integer(curAmount+1));
-}
-else
-	productList.put(id,product);
-
-session.setAttribute("productList", productList);
 %>
-<jsp:forward page="showcart.jsp" />
+
+</body>
+</html>
+

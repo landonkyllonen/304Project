@@ -1,47 +1,149 @@
-DROP TABLE OrderedProduct;
-DROP TABLE Orders;
-DROP TABLE Product;
-DROP TABLE Customer;
+DROP TABLE watches;
+DROP TABLE PaymentMethod;
+DROP TABLE Shipment;
+DROP TABLE Address;
+DROP TABLE Receipt;
+DROP TABLE Bid;
+DROP TABLE Auction;
+DROP TABLE Item;
+DROP TABLE Ticket;
+DROP TABLE Users;
 
-CREATE TABLE Product (
-   productId	int NOT NULL,
-   productName	varchar(50),
-   categoryName	varchar(50),
-   packageDesc	varchar(50),
-   price	decimal(9,2),
-   PRIMARY KEY (ProductId)
+Create Table Users(
+	userID VARCHAR (25),
+	password VARCHAR (25),
+	firstName VARCHAR(30),
+	lastName VARCHAR(30),
+	email VARCHAR(80),
+	DOB DATE,
+	bidBalance INT,
+	permissions VARCHAR(25),
+	PRIMARY KEY (userID)
 );
 
-
-CREATE TABLE Customer (
-   customerId 	int NOT NULL PRIMARY KEY,
-   password	VARCHAR(20) NOT NULL,
-   cname 	VARCHAR(50) NOT NULL,
-   street 	VARCHAR(50),
-   city 	VARCHAR(20),
-   state 	VARCHAR(2),
-   zipcode 	VARCHAR(10),
-   phone 	VARCHAR(10),
-   email 	VARCHAR(30) NOT NULL
+Create Table Ticket (
+	ticketID INT,
+	dateCreated DATETIME,
+	category VARCHAR(30),
+	content VARCHAR(500),
+	userID VARCHAR (25),
+	modID VARCHAR (25),
+	PRIMARY KEY (ticketID),
+	FOREIGN Key (userID) REFERENCES Users (userID)	
 );
 
-
-CREATE TABLE Orders (
-   orderId 	int 	NOT NULL IDENTITY PRIMARY KEY,
-   customerId 	int,
-   totalAmount 	decimal(9,2)
-   CONSTRAINT FK_Orders_Customer FOREIGN KEY (customerId) REFERENCES customer(customerId)
+Create Table Item (
+	itemNo INT,
+	name VARCHAR(30),
+	description VARCHAR(100),
+	image INT,
+	category VARCHAR(30),
+	PRIMARY KEY (itemNo)
 );
 
+Create Table Auction (
+	auctionID INT,
+	startDate DATE,
+	endDate DATE,
+	currentPrice Decimal (10,2),
+	itemNo INT,
+	seller VARCHAR (25),
+	winner VARCHAR (25),
+	PRIMARY KEY (auctionID),
+	FOREIGN KEY (seller) 
+REFERENCES Users(userID)
+ON UPDATE CASCADE ON DELETE NO ACTION,
+	FOREIGN KEY (winner) 
+REFERENCES Users(userID)
+ON UPDATE NO ACTION ON DELETE NO ACTION,
+	FOREIGN KEY (itemNo) 
+REFERENCES Item(itemNo)
+ON UPDATE CASCADE ON DELETE NO ACTION
+);
 
-CREATE TABLE OrderedProduct (
-   orderId       int	NOT NULL,
-   productId     int	NOT NULL,
-   quantity      int,
-   price         decimal(9,2),
-   PRIMARY KEY (OrderId, ProductId),
-   CONSTRAINT FK_OrderedProduct_Order FOREIGN KEY (OrderId) REFERENCES Orders (OrderId),
-   CONSTRAINT FK_OrderedProduct_Product FOREIGN KEY (ProductId) REFERENCES Product (ProductId)
+Create Table Bid (
+	bidNum INT,
+	date DATE,
+	auctionID INT,
+	PRIMARY KEY (bidNum),
+	FOREIGN KEY (auctionID) 
+REFERENCES Auction(auctionID)
+ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+Create Table Receipt(
+	invoiceNo INT,
+	auctionID INT,
+	finalSalesPercentage Decimal (2,2),
+	auctionFee Decimal (5,2),
+	collected Decimal (5,2),
+	PRIMARY KEY (invoiceNo),
+	FOREIGN KEY (auctionID) 
+REFERENCES Auction(auctionID)
+		ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+Create Table Address(
+	addressID INT,
+	userID VARCHAR (25),
+	type VARCHAR(15),
+	addressLineone VARCHAR(50),
+	addressLinetwo VARCHAR(50),
+	city VARCHAR(30),
+	provstate VARCHAR(50),
+	country VARCHAR(25),
+	zippostal VARCHAR(10),
+	PRIMARY KEY(addressID),
+	FOREIGN KEY (userID) 
+REFERENCES Users(userID)
+ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+Create Table Shipment(
+	shipmentID INT,
+	auctionID INT,
+	name VARCHAR(50),
+	cost Decimal (5,2),
+	destination INT,
+	origination INT,
+	shippingType VARCHAR(30),
+	trackingID CHAR (30),
+	shipDate DATE,
+	confirmDate DATE,
+	PRIMARY KEY (shipmentID),
+	FOREIGN KEY(origination)
+		REFERENCES Address(addressID)
+		ON UPDATE CASCADE ON DELETE NO ACTION,
+	FOREIGN KEY(destination)
+		REFERENCES Address(addressID)
+		ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+Create Table PaymentMethod(
+	userID VARCHAR (25),
+	auctionID INT,
+	name VARCHAR(30),
+	description VARCHAR(100),
+	surcharge Decimal (5,2),
+	confirmDate DATE,
+	FOREIGN KEY (auctionID) 
+REFERENCES Auction(auctionID)
+ON UPDATE CASCADE ON DELETE NO ACTION,
+	FOREIGN KEY (userID) 
+REFERENCES Users(userID)
+ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+CREATE TABLE watches(
+userID VARCHAR(25),
+auctionID INT,
+PRIMARY KEY(userID, auctionID),
+FOREIGN KEY (userID) 
+REFERENCES Users(userID)
+ON UPDATE NO ACTION ON DELETE NO ACTION,
+FOREIGN KEY (auctionID) 
+REFERENCES Auction(auctionID)
+ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
 INSERT Product VALUES(1,'Chai','Beverages','10 boxes x 20 bags',18.00);

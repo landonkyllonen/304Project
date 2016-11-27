@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>Ray's Grocery</title>
+<title>TSLRG</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <style>
 .redtext {
@@ -35,8 +35,9 @@ String elements="";
 if(username!=null&&password!=null){
 	//Verify details
 	getConnection();
+	System.out.println(username + password);
 	                		
-    String sql = "SELECT * FROM User WHERE userID = ? AND password = ?";	
+    String sql = "SELECT * FROM db_lkyllone.User WHERE userID = ? AND password = ?";	
 				      
     con = DriverManager.getConnection(url, uid, pw);
    	PreparedStatement pstmt = con.prepareStatement(sql);
@@ -55,23 +56,23 @@ if(username!=null&&password!=null){
 							
 					//Login fields
 					"<form method=\"get\" action=\"listprod.jsp\">"+
-					"<div align=\"right\">"+
-						"<pre>Username    Password   </pre>"+
+						"<div align=\"right\">"+
+							"<pre>Username    Password   </pre>"+
 					"</div>"+
 
-					"<p align=\"right\">"+
-						"<input type=\"text\" name=\"username\" size=\"10\">"+
-						"<input type=\"text\" name=\"password\" size=\"10\">"+
-					"</p>"+
+						"<p align=\"right\">"+
+							"<input type=\"text\" name=\"username\" size=\"10\">"+
+							"<input type=\"text\" name=\"password\" size=\"10\">"+
+						"</p>"+
 
-					"<p align=\"right\">"+
-						"<input type=\"submit\" value=\"Log In\">"+
-					"</p>"+
-				"</form>"+
+						"<p align=\"right\">"+
+							"<input type=\"submit\" value=\"Log In\">"+
+						"</p>"+
+					"</form>"+
 
 				"<form method=\"get\" action=\"register.jsp\">"+
 					"<p align=\"right\">"+
-						"<input type=\"reset\" value=\"Register\">"+
+						"<input type=\"submit\" value=\"Register\">"+
 					"</p>"+
 				"</form>";
    	}else{			
@@ -80,7 +81,12 @@ if(username!=null&&password!=null){
 						"<h3>Hi, "+username+"!</h3>"+
 					"</div>"+
 					"<a href=\"profile.jsp?username=" + username +
-					"\">View Profile</a>";
+					"\">View Profile</a>"+
+					"<form method=\"get\" action=\"listprod.jsp\">"+
+					"<p align=\"right\">"+
+						"<input type=\"submit\" value=\"Log Out\">"+
+					"</p>"+
+				"</form>";
    	}
    	
 	out.print(elements);
@@ -105,7 +111,7 @@ if(username!=null&&password!=null){
 
 	"<form method=\"get\" action=\"register.jsp\">"+
 		"<p align=\"right\">"+
-			"<input type=\"reset\" value=\"Register\">"+
+			"<input type=\"submit\" value=\"Register\">"+
 		"</p>"+
 	"</form>";
 
