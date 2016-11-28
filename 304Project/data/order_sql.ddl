@@ -146,130 +146,127 @@ REFERENCES Auction(auctionID)
 ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-INSERT Product VALUES(1,'Chai','Beverages','10 boxes x 20 bags',18.00);
-INSERT Product VALUES(2,'Chang','Beverages','24 - 12 oz bottles',19.00);
-INSERT Product VALUES(3,'Aniseed Syrup','Condiments','12 - 550 ml bottles',10.00);
-INSERT Product VALUES(4,'Chef Anton''s Cajun Seasoning','Condiments','48 - 6 oz jars',22.00);
-INSERT Product VALUES(5,'Chef Anton''s Gumbo Mix','Condiments','36 boxes',21.35);
-INSERT Product VALUES(6,'Grandma''s Boysenberry Spread','Condiments','12 - 8 oz jars',25.00);
-INSERT Product VALUES(7,'Uncle Bob''s Organic Dried Pears','Produce','12 - 1 lb pkgs.',30.00);
-INSERT Product VALUES(8,'Northwoods Cranberry Sauce','Condiments','12 - 12 oz jars',40.00);
-INSERT Product VALUES(9,'Mishi Kobe Niku','Meat/Poultry','18 - 500 g pkgs.',97.00);
-INSERT Product VALUES(10,'Ikura','Seafood','12 - 200 ml jars',31.00);
-INSERT Product VALUES(11,'Queso Cabrales','Dairy Products','1 kg pkg.',21.00);
-INSERT Product VALUES(12,'Queso Manchego La Pastora','Dairy Products','10 - 500 g pkgs.',38.00);
-INSERT Product VALUES(13,'Konbu','Seafood','2 kg box',6.00);
-INSERT Product VALUES(14,'Tofu','Produce','40 - 100 g pkgs.',23.25);
-INSERT Product VALUES(15,'Genen Shouyu','Condiments','24 - 250 ml bottles',15.50);
-INSERT Product VALUES(16,'Pavlova','Confections','32 - 500 g boxes',17.45);
-INSERT Product VALUES(17,'Alice Mutton','Meat/Poultry','20 - 1 kg tins',39.00);
-INSERT Product VALUES(18,'Carnarvon Tigers','Seafood','16 kg pkg.',62.50);
-INSERT Product VALUES(19,'Teatime Chocolate Biscuits','Confections','10 boxes x 12 pieces',9.20);
-INSERT Product VALUES(20,'Sir Rodney''s Marmalade','Confections','30 gift boxes',81.00);
-INSERT Product VALUES(21,'Sir Rodney''s Scones','Confections','24 pkgs. x 4 pieces',10.00);
-INSERT Product VALUES(22,'Gustaf''s Knäckebröd','Grains/Cereals','24 - 500 g pkgs.',21.00);
-INSERT Product VALUES(23,'Tunnbröd','Grains/Cereals','12 - 250 g pkgs.',9.00);
-INSERT Product VALUES(24,'Guaraná Fantástica','Beverages','12 - 355 ml cans',4.50);
-INSERT Product VALUES(25,'NuNuCa Nuß-Nougat-Creme','Confections','20 - 450 g glasses',14.00);
-INSERT Product VALUES(26,'Gumbär Gummibärchen','Confections','100 - 250 g bags',31.23);
-INSERT Product VALUES(27,'Schoggi Schokolade','Confections','100 - 100 g pieces',43.90);
-INSERT Product VALUES(28,'Rössle Sauerkraut','Produce','25 - 825 g cans',45.60);
-INSERT Product VALUES(29,'Thüringer Rostbratwurst','Meat/Poultry','50 bags x 30 sausgs.',123.79);
-INSERT Product VALUES(30,'Nord-Ost Matjeshering','Seafood','10 - 200 g glasses',25.89);
-INSERT Product VALUES(31,'Gorgonzola Telino','Dairy Products','12 - 100 g pkgs',12.50);
-INSERT Product VALUES(32,'Mascarpone Fabioli','Dairy Products','24 - 200 g pkgs.',32.00);
-INSERT Product VALUES(33,'Geitost','Dairy Products','500 g',2.50);
-INSERT Product VALUES(34,'Sasquatch Ale','Beverages','24 - 12 oz bottles',14.00);
-INSERT Product VALUES(35,'Steeleye Stout','Beverages','24 - 12 oz bottles',18.00);
-INSERT Product VALUES(36,'Inlagd Sill','Seafood','24 - 250 g  jars',19.00);
-INSERT Product VALUES(37,'Gravad lax','Seafood','12 - 500 g pkgs.',26.00);
-INSERT Product VALUES(38,'Côte de Blaye','Beverages','12 - 75 cl bottles',263.50);
-INSERT Product VALUES(39,'Chartreuse verte','Beverages','750 cc per bottle',18.00);
-INSERT Product VALUES(40,'Boston Crab Meat','Seafood','24 - 4 oz tins',18.40);
-INSERT Product VALUES(41,'Jack''s New England Clam Chowder','Seafood','12 - 12 oz cans',9.65);
-INSERT Product VALUES(42,'Singaporean Hokkien Fried Mee','Grains/Cereals','32 - 1 kg pkgs.',14.00);
-INSERT Product VALUES(43,'Ipoh Coffee','Beverages','16 - 500 g tins',46.00);
-INSERT Product VALUES(44,'Gula Malacca','Condiments','20 - 2 kg bags',19.45);
-INSERT Product VALUES(45,'Røgede sild','Seafood','1k pkg.',9.50);
-INSERT Product VALUES(46,'Spegesild','Seafood','4 - 450 g glasses',12.00);
-INSERT Product VALUES(47,'Zaanse koeken','Confections','10 - 4 oz boxes',9.50);
-INSERT Product VALUES(48,'Chocolade','Confections','10 pkgs.',12.75);
-INSERT Product VALUES(49,'Maxilaku','Confections','24 - 50 g pkgs.',20.00);
-INSERT Product VALUES(50,'Valkoinen suklaa','Confections','12 - 100 g bars',16.25);
-INSERT Product VALUES(51,'Manjimup Dried Apples','Produce','50 - 300 g pkgs.',53.00);
-INSERT Product VALUES(52,'Filo Mix','Grains/Cereals','16 - 2 kg boxes',7.00);
-INSERT Product VALUES(53,'Perth Pasties','Meat/Poultry','48 pieces',32.80);
-INSERT Product VALUES(54,'Tourtière','Meat/Poultry','16 pies',7.45);
-INSERT Product VALUES(55,'Pâté chinois','Meat/Poultry','24 boxes x 2 pies',24.00);
-INSERT Product VALUES(56,'Gnocchi di nonna Alice','Grains/Cereals','24 - 250 g pkgs.',38.00);
-INSERT Product VALUES(57,'Ravioli Angelo','Grains/Cereals','24 - 250 g pkgs.',19.50);
-INSERT Product VALUES(58,'Escargots de Bourgogne','Seafood','24 pieces',13.25);
-INSERT Product VALUES(59,'Raclette Courdavault','Dairy Products','5 kg pkg.',55.00);
-INSERT Product VALUES(60,'Camembert Pierrot','Dairy Products','15 - 300 g rounds',34.00);
-INSERT Product VALUES(61,'Sirop d''érable','Condiments','24 - 500 ml bottles',28.50);
-INSERT Product VALUES(62,'Tarte au sucre','Confections','48 pies',49.30);
-INSERT Product VALUES(63,'Vegie-spread','Condiments','15 - 625 g jars',43.90);
-INSERT Product VALUES(64,'Wimmers gute Semmelknödel','Grains/Cereals','20 bags x 4 pieces',33.25);
-INSERT Product VALUES(65,'Louisiana Fiery Hot Pepper Sauce','Condiments','32 - 8 oz bottles',21.05);
-INSERT Product VALUES(66,'Louisiana Hot Spiced Okra','Condiments','24 - 8 oz jars',17.00);
-INSERT Product VALUES(67,'Laughing Lumberjack Lager','Beverages','24 - 12 oz bottles',14.00);
-INSERT Product VALUES(68,'Scottish Longbreads','Confections','10 boxes x 8 pieces',12.50);
-INSERT Product VALUES(69,'Gudbrandsdalsost','Dairy Products','10 kg pkg.',36.00);
-INSERT Product VALUES(70,'Outback Lager','Beverages','24 - 355 ml bottles',15.00);
-INSERT Product VALUES(71,'Fløtemysost','Dairy Products','10 - 500 g pkgs.',21.50);
-INSERT Product VALUES(72,'Mozzarella di Giovanni','Dairy Products','24 - 200 g pkgs.',34.80);
-INSERT Product VALUES(73,'Röd Kaviar','Seafood','24 - 150 g jars',15.00);
-INSERT Product VALUES(74,'Longlife Tofu','Produce','5 kg pkg.',10.00);
-INSERT Product VALUES(75,'Rhönbräu Klosterbier','Beverages','24 - 0.5 l bottles',7.75);
-INSERT Product VALUES(76,'Lakkalikööri','Beverages','500 ml',18.00);
-INSERT Product VALUES(77,'Original Frankfurter grüne Soße','Condiments','12 boxes',13.00);
+INSERT Item VALUES(1,'Galaxy S2', 'Stock Phone Details', 1, 'Electronics');
+INSERT Item VALUES(2, 'Android Charge Cable', 'Quick charging', 2, 'Electronics');
+INSERT Item VALUES(3, 'Gold Watch','14k Gold', 3, 'Jewelry');
+INSERT Item VALUES(4, 'Womens Necklace', 'Sterling Silver', 4, 'Jewelry');
+INSERT Item VALUES(5, 'Diamond ring','Diamonds', 5, 'Jewelry');
+INSERT Item VALUES(6, 'Gold Ring','Gold', 6, 'Jewelry');
+INSERT Item VALUES(7, 'Gold Bar','Gold', 7, 'Jewelry');
+INSERT Item VALUES(8, 'Gold Toilet','Gold', 8, 'Jewelry');
+INSERT Item VALUES(9, 'Gold Foil','Gold', 9, 'Jewelry');
+INSERT Item VALUES(10, 'Gold Wire','Gold', 10, 'Jewelry');
+INSERT Item VALUES(11, 'Gold Tooth','Gold', 11, 'Jewelry');
+INSERT Item VALUES(12, 'Gold Chain','Gold', 12, 'Jewelry');
+INSERT Item VALUES(13, 'Smart watch','pretty cool', 13, 'Electronics');
+INSERT Item VALUES(14, 'Drone','Spy drone', 14, 'Electronics');
+INSERT Item VALUES(15, 'Pebble Qi Charger','wireless', 15, 'Electronics');
+INSERT Item VALUES(16, 'Alarm Clock', 'cant wake up', 16, 'Electronics');
+INSERT Item VALUES(17, 'Golf balls','hit em', 17, 'Sports');
+INSERT Item VALUES(18, 'Golf clubs','use em for the balls', 18, 'Sports');
+INSERT Item VALUES(19, 'Soccer Ball','kick it', 19, 'Sports');
+INSERT Item VALUES(20, 'Volleyball Net','For volleyball', 20, 'Sports');
+INSERT Item VALUES(21, 'Badminton Set','For badminton', 21, 'Sports');
+INSERT Item VALUES(22, 'Yoga mat','for yoga', 22, 'Sports');
+INSERT Item VALUES(23, 'Skis','for skiing', 23, 'Sports');
+INSERT Item VALUES(24, 'Ski Poles','for skis', 24, 'Sports');
+INSERT Item VALUES(25, 'Boxing Gloves','punch people with them', 25, 'Sports');
+INSERT Item VALUES(26, 'Blush','for your face', 26, 'Cosmetics');
+INSERT Item VALUES(27, 'Eyeliner','also for your face', 27, 'Cosmetics');
+INSERT Item VALUES(28, 'Foundation','also for your face', 28, 'Cosmetics');
+INSERT Item VALUES(29, 'Brush Set','for makeup application', 29, 'Cosmetics');
+INSERT Item VALUES(30, 'Trowel','for gardening', 30, 'Home&Garden');
+INSERT Item VALUES(31, 'Wire Fencing','for gardening', 31, 'Home&Garden');
+INSERT Item VALUES(32, 'Watering Can','for gardening', 32, 'Home&Garden');
+INSERT Item VALUES(33, 'Hose','30ft', 33, 'Home&Garden');
+INSERT Item VALUES(34, 'Harry Potter and the Treacherous Crawlspace','Best Seller', 34, 'Books');
+INSERT Item VALUES(35,'Grandma''s Boysenberry Spread','Tasty', 35,'Food');
+INSERT Item VALUES(36,'Uncle Bob''s Organic Dried Pears','He just leaves them in his shed', 36,'Food');
+INSERT Item VALUES(37,'Northwoods Cranberry Sauce','Personally not a fan', 37,'Food');
+INSERT Item VALUES(38,'Mishi Kobe Niku','Meat/Poultry', 38,'Food');
+INSERT Item VALUES(39,'Ikura','Seafood', 39, 'Food');
+INSERT Item VALUES(40,'Queso Cabrales','Dairy Products', 40,'Food');
 
-INSERT INTO Customer VALUES ( 1, 'password1', 'A. Anderson', '103 AnyWhere Street', 'Alabtraz', 'AL', '11111' ,'1234567890','aanderson@anywhere.com' );
-INSERT INTO Customer VALUES ( 2, 'badpass', 'B. Brown', '222 Bush Avenue', 'Boston', 'MA', '22222','2224449999','bbrown@bigcompany.com' );
-INSERT INTO Customer VALUES ( 3, 'AxBC12', 'C. Cole', '333 Central Crescent', 'Chicago', 'IL', '33333','3334445555','cole@charity.org' );
-INSERT INTO Customer VALUES ( 4, '1234abc', 'D. Doe', '444 Dover Lane', 'Detroit', 'MI', '44444','4445556666','doe@doe.com' );
-INSERT INTO Customer VALUES ( 5, 'ABCD1245', 'E. Elliott', '555 Everwood Street', 'Engliston', 'IA', '55555' ,'5556667777', 'engel@uiowa.edu');
+INSERT INTO Users VALUES ('landon', 'mypass', 'Landon', 'Kyllonen', 'LandonKyllonen@hotmail.com','1993-05-06', 100);
+INSERT INTO Users VALUES ('matt', 'mypass', 'Landon', 'Kyllonen', 'someemail1@hotmail.com','1993-05-06', 100);
+INSERT INTO Users VALUES ('zifang', 'mypass', 'Landon', 'Kyllonen', 'someemail2@hotmail.com','1993-05-06', 100);
+INSERT INTO Users VALUES ('russell', 'mypass', 'Landon', 'Kyllonen', 'someemail3@hotmail.com','1993-05-06', 100);
+INSERT INTO Users VALUES ('randomuser', 'password1', 'bob', 'loblaw', 'sadas@hotmail.com','1993-05-06', 20);
 
-DECLARE @orderId int
-INSERT INTO Orders (customerId, totalAmount) VALUES (1,137.89)
-SELECT @orderId = @@IDENTITY
-INSERT INTO OrderedProduct VALUES (@orderId,10,1,31)
-INSERT INTO OrderedProduct VALUES (@orderId,20,1,81)
-INSERT INTO OrderedProduct VALUES (@orderId,30,1,25.89);
-
-DECLARE @orderId int
-INSERT INTO Orders (customerId, totalAmount) VALUES (2,47)
-SELECT @orderId = @@IDENTITY
-INSERT INTO OrderedProduct VALUES (@orderId,1,2,18)
-INSERT INTO OrderedProduct VALUES (@orderId,2,3,19)
-INSERT INTO OrderedProduct VALUES (@orderId,3,4,10);
-
-DECLARE @orderId int
-INSERT INTO Orders (customerId, totalAmount) VALUES (3,106.75)
-SELECT @orderId = @@IDENTITY
-INSERT INTO OrderedProduct VALUES (@orderId,5,5,21.35);
-
-DECLARE @orderId int
-INSERT INTO Orders (customerId, totalAmount) VALUES (4,140)
-SELECT @orderId = @@IDENTITY
-INSERT INTO OrderedProduct VALUES (@orderId,6,2,25)
-INSERT INTO OrderedProduct VALUES (@orderId,7,3,30);
-
-DECLARE @orderId int
-INSERT INTO Orders (customerId, totalAmount) VALUES (5, 2059.9)
-SELECT @orderId = @@IDENTITY
-INSERT INTO OrderedProduct VALUES (@orderId,8,3,40)
-INSERT INTO OrderedProduct VALUES (@orderId,18,2,62.5)
-INSERT INTO OrderedProduct VALUES (@orderId,28,4,45.6)
-INSERT INTO OrderedProduct VALUES (@orderId,38,6,263.5)
-INSERT INTO OrderedProduct VALUES (@orderId,48,3,12.75)
-INSERT INTO OrderedProduct VALUES (@orderId,58,1,13.25);
-
-DECLARE @orderId int
-INSERT INTO Orders (customerId, totalAmount) VALUES (1, 274.45)
-SELECT @orderId = @@IDENTITY
-INSERT INTO OrderedProduct VALUES (@orderId,50,1,16.25)
-INSERT INTO OrderedProduct VALUES (@orderId,51,2,53)
-INSERT INTO OrderedProduct VALUES (@orderId,52,3,7)
-INSERT INTO OrderedProduct VALUES (@orderId,53,4,32.80);
+auctionID INT,
+	startDate DATE,
+	endDate DATE,
+	currentPrice Decimal (10,2),
+	itemNo INT,
+	seller VARCHAR (25),
+	winner VARCHAR (25),
+	
+INSERT INTO Auction VALUES(1, '2016-11-27','2016-12-08', 5,  1, 'none','none');
+INSERT INTO Auction VALUES(2, '2016-11-27','2016-12-08', 7,  1, 'none','none');
+INSERT INTO Auction VALUES(3, '2016-11-27','2016-12-08', 8.45,  2, 'none','none');
+INSERT INTO Auction VALUES(4, '2016-11-27','2016-12-08', 5.23,  3, 'none','none');
+INSERT INTO Auction VALUES(5, '2016-11-27','2016-12-08', 4.25,  4, 'none','none');
+INSERT INTO Auction VALUES(6, '2016-11-27','2016-12-08', 5.25,  4, 'none','none');
+INSERT INTO Auction VALUES(7, '2016-11-27','2016-12-08', 1.52,  4, 'none','none');
+INSERT INTO Auction VALUES(8, '2016-11-27','2016-12-08', 1.23,  5, 'none','none');
+INSERT INTO Auction VALUES(9, '2016-11-27','2016-12-08', 1.63,  6, 'none','none');
+INSERT INTO Auction VALUES(10, '2016-11-27','2016-12-08', 1.74,  7, 'none','none');
+INSERT INTO Auction VALUES(11, '2016-11-27','2016-12-08', 18.25,  8, 'none','none');
+INSERT INTO Auction VALUES(12, '2016-11-27','2016-12-08', 4.25,  9, 'none','none');
+INSERT INTO Auction VALUES(13, '2016-11-27','2016-12-08', 3.25,  10, 'none','none');
+INSERT INTO Auction VALUES(14, '2016-11-27','2016-12-08', 2.75,  11, 'none','none');
+INSERT INTO Auction VALUES(15, '2016-11-27','2016-12-08', 1.25,  12, 'none','none');
+INSERT INTO Auction VALUES(16, '2016-11-27','2016-12-08', 18.25,  13, 'none','none');
+INSERT INTO Auction VALUES(17, '2016-11-27','2016-12-08', 1.75,  14, 'none','none');
+INSERT INTO Auction VALUES(18, '2016-11-27','2016-12-08', 18.25,  15, 'none','none');
+INSERT INTO Auction VALUES(19, '2016-11-27','2016-12-08', 5.25,  16, 'none','none');
+INSERT INTO Auction VALUES(20, '2016-11-27','2016-12-08', 4.54,  17, 'none','none');
+INSERT INTO Auction VALUES(21, '2016-11-27','2016-12-08', 18.25,  18, 'none','none');
+INSERT INTO Auction VALUES(22, '2016-11-27','2016-12-08', 18.75,  19, 'none','none');
+INSERT INTO Auction VALUES(23, '2016-11-27','2016-12-08', 18.25,  20, 'none','none');
+INSERT INTO Auction VALUES(24, '2016-11-27','2016-12-08', 1.23,  21, 'none','none');
+INSERT INTO Auction VALUES(25, '2016-11-27','2016-12-08', 5.36,  22, 'none','none');
+INSERT INTO Auction VALUES(26, '2016-11-27','2016-12-08', 18.75,  23, 'none','none');
+INSERT INTO Auction VALUES(27, '2016-11-27','2016-12-08', 18.25,  24, 'none','none');
+INSERT INTO Auction VALUES(28, '2016-11-27','2016-12-08', 18.53,  25, 'none','none');
+INSERT INTO Auction VALUES(29, '2016-11-27','2016-12-08', 18.25,  26, 'none','none');
+INSERT INTO Auction VALUES(30, '2016-11-27','2016-12-08', 18.53,  27, 'none','none');
+INSERT INTO Auction VALUES(31, '2016-11-27','2016-12-08', 7.58,  28, 'none','none');
+INSERT INTO Auction VALUES(32, '2016-11-27','2016-12-08', 9.54,  29, 'none','none');
+INSERT INTO Auction VALUES(33, '2016-11-27','2016-12-08', 0.55,  30, 'none','none');
+INSERT INTO Auction VALUES(34, '2016-11-27','2016-12-08', 0.25,  30, 'none','none');
+INSERT INTO Auction VALUES(35, '2016-11-27','2016-12-08', 0.63,  30, 'none','none');
+INSERT INTO Auction VALUES(36, '2016-11-27','2016-12-08', 0.25,  31, 'none','none');
+INSERT INTO Auction VALUES(37, '2016-11-27','2016-12-08', 0.64,  32, 'none','none');
+INSERT INTO Auction VALUES(38, '2016-11-27','2016-12-08', 0.25,  32, 'none','none');
+INSERT INTO Auction VALUES(39, '2016-11-27','2016-12-08', 0.64,  32, 'none','none');
+INSERT INTO Auction VALUES(40, '2016-11-27','2016-12-08', 0.25,  32, 'none','none');
+INSERT INTO Auction VALUES(41, '2016-11-27','2016-12-08', 0.62,  32, 'none','none');
+INSERT INTO Auction VALUES(42, '2016-11-27','2016-12-08', 0.53,  32, 'none','none');
+INSERT INTO Auction VALUES(43, '2016-11-27','2016-12-08', 18.25,  32, 'none','none');
+INSERT INTO Auction VALUES(44, '2016-11-27','2016-12-08', 1.32,  32, 'none','none');
+INSERT INTO Auction VALUES(45, '2016-11-27','2016-12-08', 1.54,  33, 'none','none');
+INSERT INTO Auction VALUES(46, '2016-11-27','2016-12-08', 1.25,  33, 'none','none');
+INSERT INTO Auction VALUES(47, '2016-11-27','2016-12-08', 5.63,  33, 'none','none');
+INSERT INTO Auction VALUES(48, '2016-11-27','2016-12-08', 3.42,  34, 'none','none');
+INSERT INTO Auction VALUES(49, '2016-11-27','2016-12-08', 5.25,  34, 'none','none');
+INSERT INTO Auction VALUES(50, '2016-11-27','2016-12-08', 18.42,  35, 'none','none');
+INSERT INTO Auction VALUES(51, '2016-11-27','2016-12-08', 5.25,  36, 'none','none');
+INSERT INTO Auction VALUES(52, '2016-11-27','2016-12-08', 18.25,  37, 'none','none');
+INSERT INTO Auction VALUES(53, '2016-11-27','2016-12-08', 5.25,  37, 'none','none');
+INSERT INTO Auction VALUES(54, '2016-11-27','2016-12-08', 7.42,  37, 'none','none');
+INSERT INTO Auction VALUES(55, '2016-11-27','2016-12-08', 7.23,  37, 'none','none');
+INSERT INTO Auction VALUES(56, '2016-11-27','2016-12-08', 7.32,  37, 'none','none');
+INSERT INTO Auction VALUES(57, '2016-11-27','2016-12-08', 7.63,  5, 'none','none');
+INSERT INTO Auction VALUES(58, '2016-11-27','2016-12-08', 1.23,  6, 'none','none');
+INSERT INTO Auction VALUES(59, '2016-11-27','2016-12-08', 2.25,  7, 'none','none');
+INSERT INTO Auction VALUES(60, '2016-11-27','2016-12-08', 32.25,  8, 'none','none');
+INSERT INTO Auction VALUES(61, '2016-11-27','2016-12-08', 2.25,  9, 'none','none');
+INSERT INTO Auction VALUES(62, '2016-11-27','2016-12-08', 6.53,  10, 'none','none');
+INSERT INTO Auction VALUES(63, '2016-11-27','2016-12-08', 4.53,  11, 'none','none');
+INSERT INTO Auction VALUES(64, '2016-11-27','2016-12-08', 2.25,  11, 'none','none');
+INSERT INTO Auction VALUES(65, '2016-11-27','2016-12-08', 8.42,  11, 'none','none');
+INSERT INTO Auction VALUES(66, '2016-11-27','2016-12-08', 7.25,  38, 'none','none');
+INSERT INTO Auction VALUES(67, '2016-11-27','2016-12-08', 4.53,  39, 'none','none');
+INSERT INTO Auction VALUES(68, '2016-11-27','2016-12-08', 4.25,  40, 'none','none');
 
