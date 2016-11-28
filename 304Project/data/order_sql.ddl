@@ -192,14 +192,6 @@ INSERT INTO Users VALUES ('matt', 'mypass', 'Landon', 'Kyllonen', 'someemail1@ho
 INSERT INTO Users VALUES ('zifang', 'mypass', 'Landon', 'Kyllonen', 'someemail2@hotmail.com','1993-05-06', 100);
 INSERT INTO Users VALUES ('russell', 'mypass', 'Landon', 'Kyllonen', 'someemail3@hotmail.com','1993-05-06', 100);
 INSERT INTO Users VALUES ('randomuser', 'password1', 'bob', 'loblaw', 'sadas@hotmail.com','1993-05-06', 20);
-
-auctionID INT,
-	startDate DATE,
-	endDate DATE,
-	currentPrice Decimal (10,2),
-	itemNo INT,
-	seller VARCHAR (25),
-	winner VARCHAR (25),
 	
 INSERT INTO Auction VALUES(1, '2016-11-27','2016-12-08', 5,  1, 'none','none');
 INSERT INTO Auction VALUES(2, '2016-11-27','2016-12-08', 7,  1, 'none','none');

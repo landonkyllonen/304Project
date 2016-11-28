@@ -37,7 +37,7 @@ if(username!=null&&password!=null){
 	getConnection();
 	System.out.println(username + password);
 	                		
-    String sql = "SELECT * FROM db_lkyllone.User WHERE userID = ? AND password = ?";	
+    String sql = "SELECT * FROM Users WHERE userID = ? AND password = ?";	
 				      
     con = DriverManager.getConnection(url, uid, pw);
    	PreparedStatement pstmt = con.prepareStatement(sql);
@@ -145,14 +145,13 @@ catch (SQLException ex)
 */
 %>
 
-  <option>Beverages</option>
-  <option>Condiments</option>
-  <option>Confections</option>
-  <option>Dairy Products</option>
-  <option>Grains/Cereals</option>
-  <option>Meat/Poultry</option>
-  <option>Produce</option>
-  <option>Seafood</option>
+  <option>Books</option>
+  <option>Cosmetics</option>
+  <option>Electronics</option>
+  <option>Food</option>
+  <option>Home&Garden</option>
+  <option>Jewelry</option>
+  <option>Sports</option>
 
   <input type="text" name="productName" size="50">    
   </select><input type="submit" value="Submit"><input type="reset" value="Reset"></p>
@@ -161,14 +160,13 @@ catch (SQLException ex)
 <%
 // Colors for different item categories
 HashMap colors = new HashMap();		// This may be done dynamically as well, a little tricky...
-colors.put("Beverages", "#0000FF");
-colors.put("Condiments", "#FF0000");
-colors.put("Confections", "#000000");
-colors.put("Dairy Products", "#6600CC");
-colors.put("Grains/Cereals", "#55A5B3");
-colors.put("Meat/Poultry", "#FF9900");
-colors.put("Produce", "#00CC00");
-colors.put("Seafood", "#FF66CC");
+colors.put("Books", "#0000FF");
+colors.put("Cosmetics", "#FF0000");
+colors.put("Electronics", "#000000");
+colors.put("Food", "#6600CC");
+colors.put("Home&Garden", "#55A5B3");
+colors.put("Jewelry", "#FF9900");
+colors.put("Sports", "#00CC00");
 %>
 
 <%
@@ -185,23 +183,23 @@ if (hasNameParam && hasCategoryParam)
 {
 	filter = "<h3>Products containing '"+name+"' in category: '"+category+"'</h3>";
 	name = '%'+name+'%';
-	sql = "SELECT productId, productName, price, categoryName FROM Product WHERE productName LIKE ? AND categoryName = ?";
+	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE name LIKE ? AND category = ?";
 }
 else if (hasNameParam)
 {
 	filter = "<h3>Products containing '"+name+"'</h3>";
 	name = '%'+name+'%';
-	sql = "SELECT productId, productName, price, categoryName FROM Product WHERE productName LIKE ?";
+	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE productName LIKE ?";
 }
 else if (hasCategoryParam)
 {
 	filter = "<h3>Products in category: '"+category+"'</h3>";
-	sql = "SELECT productId, productName, price, categoryName FROM Product WHERE categoryName = ?";
+	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE categoryName = ?";
 }
 else
 {
 	filter = "<h3>All Products</h3>";
-	sql = "SELECT productId, productName, price, categoryName FROM Product";
+	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo";
 }
 
 out.println(filter);
