@@ -14,7 +14,7 @@ Create Table Users(
 	password VARCHAR (25),
 	firstName VARCHAR(30),
 	lastName VARCHAR(30),
-	email VARCHAR(80),
+	email VARCHAR(100),
 	DOB DATE,
 	bidBalance INT,
 	permissions VARCHAR(25),
@@ -34,17 +34,17 @@ Create Table Ticket (
 
 Create Table Item (
 	itemNo INT,
-	name VARCHAR(30),
+	name VARCHAR(100),
 	description VARCHAR(100),
-	image INT,
+	image VARCHAR(200),
 	category VARCHAR(30),
 	PRIMARY KEY (itemNo)
 );
 
 Create Table Auction (
-	auctionID INT,
-	startDate DATE,
-	endDate DATE,
+	auctionID INT IDENTITY(1,1),
+	startDate DATETIME,
+	endDate DATETIME,
 	currentPrice Decimal (10,2),
 	itemNo INT,
 	seller VARCHAR (25),
@@ -187,78 +187,77 @@ INSERT Item VALUES(38,'Mishi Kobe Niku','Meat/Poultry', 38,'Food');
 INSERT Item VALUES(39,'Ikura','Seafood', 39, 'Food');
 INSERT Item VALUES(40,'Queso Cabrales','Dairy Products', 40,'Food');
 
-INSERT INTO Users VALUES ('landon', 'mypass', 'Landon', 'Kyllonen', 'LandonKyllonen@hotmail.com','1993-05-06', 100);
-INSERT INTO Users VALUES ('matt', 'mypass', 'Landon', 'Kyllonen', 'someemail1@hotmail.com','1993-05-06', 100);
-INSERT INTO Users VALUES ('zifang', 'mypass', 'Landon', 'Kyllonen', 'someemail2@hotmail.com','1993-05-06', 100);
-INSERT INTO Users VALUES ('russell', 'mypass', 'Landon', 'Kyllonen', 'someemail3@hotmail.com','1993-05-06', 100);
-INSERT INTO Users VALUES ('randomuser', 'password1', 'bob', 'loblaw', 'sadas@hotmail.com','1993-05-06', 20);
+INSERT INTO Users VALUES ('landon', 'mypass', 'Landon', 'Kyllonen', 'LandonKyllonen@hotmail.com','1993-05-06', 100, 'admin');
+INSERT INTO Users VALUES ('matt', 'mypass', 'Landon', 'Kyllonen', 'someemail1@hotmail.com','1993-05-06', 100, 'admin');
+INSERT INTO Users VALUES ('zifang', 'mypass', 'Landon', 'Kyllonen', 'someemail2@hotmail.com','1993-05-06', 100, 'admin');
+INSERT INTO Users VALUES ('russell', 'mypass', 'Landon', 'Kyllonen', 'someemail3@hotmail.com','1993-05-06', 100, 'admin');
+INSERT INTO Users VALUES ('randomuser', 'password1', 'bob', 'loblaw', 'sadas@hotmail.com','1993-05-06', 20, 'user');
 	
-INSERT INTO Auction VALUES(1, '2016-11-27','2016-12-08', 5,  1, 'none','none');
-INSERT INTO Auction VALUES(2, '2016-11-27','2016-12-08', 7,  1, 'none','none');
-INSERT INTO Auction VALUES(3, '2016-11-27','2016-12-08', 8.45,  2, 'none','none');
-INSERT INTO Auction VALUES(4, '2016-11-27','2016-12-08', 5.23,  3, 'none','none');
-INSERT INTO Auction VALUES(5, '2016-11-27','2016-12-08', 4.25,  4, 'none','none');
-INSERT INTO Auction VALUES(6, '2016-11-27','2016-12-08', 5.25,  4, 'none','none');
-INSERT INTO Auction VALUES(7, '2016-11-27','2016-12-08', 1.52,  4, 'none','none');
-INSERT INTO Auction VALUES(8, '2016-11-27','2016-12-08', 1.23,  5, 'none','none');
-INSERT INTO Auction VALUES(9, '2016-11-27','2016-12-08', 1.63,  6, 'none','none');
-INSERT INTO Auction VALUES(10, '2016-11-27','2016-12-08', 1.74,  7, 'none','none');
-INSERT INTO Auction VALUES(11, '2016-11-27','2016-12-08', 18.25,  8, 'none','none');
-INSERT INTO Auction VALUES(12, '2016-11-27','2016-12-08', 4.25,  9, 'none','none');
-INSERT INTO Auction VALUES(13, '2016-11-27','2016-12-08', 3.25,  10, 'none','none');
-INSERT INTO Auction VALUES(14, '2016-11-27','2016-12-08', 2.75,  11, 'none','none');
-INSERT INTO Auction VALUES(15, '2016-11-27','2016-12-08', 1.25,  12, 'none','none');
-INSERT INTO Auction VALUES(16, '2016-11-27','2016-12-08', 18.25,  13, 'none','none');
-INSERT INTO Auction VALUES(17, '2016-11-27','2016-12-08', 1.75,  14, 'none','none');
-INSERT INTO Auction VALUES(18, '2016-11-27','2016-12-08', 18.25,  15, 'none','none');
-INSERT INTO Auction VALUES(19, '2016-11-27','2016-12-08', 5.25,  16, 'none','none');
-INSERT INTO Auction VALUES(20, '2016-11-27','2016-12-08', 4.54,  17, 'none','none');
-INSERT INTO Auction VALUES(21, '2016-11-27','2016-12-08', 18.25,  18, 'none','none');
-INSERT INTO Auction VALUES(22, '2016-11-27','2016-12-08', 18.75,  19, 'none','none');
-INSERT INTO Auction VALUES(23, '2016-11-27','2016-12-08', 18.25,  20, 'none','none');
-INSERT INTO Auction VALUES(24, '2016-11-27','2016-12-08', 1.23,  21, 'none','none');
-INSERT INTO Auction VALUES(25, '2016-11-27','2016-12-08', 5.36,  22, 'none','none');
-INSERT INTO Auction VALUES(26, '2016-11-27','2016-12-08', 18.75,  23, 'none','none');
-INSERT INTO Auction VALUES(27, '2016-11-27','2016-12-08', 18.25,  24, 'none','none');
-INSERT INTO Auction VALUES(28, '2016-11-27','2016-12-08', 18.53,  25, 'none','none');
-INSERT INTO Auction VALUES(29, '2016-11-27','2016-12-08', 18.25,  26, 'none','none');
-INSERT INTO Auction VALUES(30, '2016-11-27','2016-12-08', 18.53,  27, 'none','none');
-INSERT INTO Auction VALUES(31, '2016-11-27','2016-12-08', 7.58,  28, 'none','none');
-INSERT INTO Auction VALUES(32, '2016-11-27','2016-12-08', 9.54,  29, 'none','none');
-INSERT INTO Auction VALUES(33, '2016-11-27','2016-12-08', 0.55,  30, 'none','none');
-INSERT INTO Auction VALUES(34, '2016-11-27','2016-12-08', 0.25,  30, 'none','none');
-INSERT INTO Auction VALUES(35, '2016-11-27','2016-12-08', 0.63,  30, 'none','none');
-INSERT INTO Auction VALUES(36, '2016-11-27','2016-12-08', 0.25,  31, 'none','none');
-INSERT INTO Auction VALUES(37, '2016-11-27','2016-12-08', 0.64,  32, 'none','none');
-INSERT INTO Auction VALUES(38, '2016-11-27','2016-12-08', 0.25,  32, 'none','none');
-INSERT INTO Auction VALUES(39, '2016-11-27','2016-12-08', 0.64,  32, 'none','none');
-INSERT INTO Auction VALUES(40, '2016-11-27','2016-12-08', 0.25,  32, 'none','none');
-INSERT INTO Auction VALUES(41, '2016-11-27','2016-12-08', 0.62,  32, 'none','none');
-INSERT INTO Auction VALUES(42, '2016-11-27','2016-12-08', 0.53,  32, 'none','none');
-INSERT INTO Auction VALUES(43, '2016-11-27','2016-12-08', 18.25,  32, 'none','none');
-INSERT INTO Auction VALUES(44, '2016-11-27','2016-12-08', 1.32,  32, 'none','none');
-INSERT INTO Auction VALUES(45, '2016-11-27','2016-12-08', 1.54,  33, 'none','none');
-INSERT INTO Auction VALUES(46, '2016-11-27','2016-12-08', 1.25,  33, 'none','none');
-INSERT INTO Auction VALUES(47, '2016-11-27','2016-12-08', 5.63,  33, 'none','none');
-INSERT INTO Auction VALUES(48, '2016-11-27','2016-12-08', 3.42,  34, 'none','none');
-INSERT INTO Auction VALUES(49, '2016-11-27','2016-12-08', 5.25,  34, 'none','none');
-INSERT INTO Auction VALUES(50, '2016-11-27','2016-12-08', 18.42,  35, 'none','none');
-INSERT INTO Auction VALUES(51, '2016-11-27','2016-12-08', 5.25,  36, 'none','none');
-INSERT INTO Auction VALUES(52, '2016-11-27','2016-12-08', 18.25,  37, 'none','none');
-INSERT INTO Auction VALUES(53, '2016-11-27','2016-12-08', 5.25,  37, 'none','none');
-INSERT INTO Auction VALUES(54, '2016-11-27','2016-12-08', 7.42,  37, 'none','none');
-INSERT INTO Auction VALUES(55, '2016-11-27','2016-12-08', 7.23,  37, 'none','none');
-INSERT INTO Auction VALUES(56, '2016-11-27','2016-12-08', 7.32,  37, 'none','none');
-INSERT INTO Auction VALUES(57, '2016-11-27','2016-12-08', 7.63,  5, 'none','none');
-INSERT INTO Auction VALUES(58, '2016-11-27','2016-12-08', 1.23,  6, 'none','none');
-INSERT INTO Auction VALUES(59, '2016-11-27','2016-12-08', 2.25,  7, 'none','none');
-INSERT INTO Auction VALUES(60, '2016-11-27','2016-12-08', 32.25,  8, 'none','none');
-INSERT INTO Auction VALUES(61, '2016-11-27','2016-12-08', 2.25,  9, 'none','none');
-INSERT INTO Auction VALUES(62, '2016-11-27','2016-12-08', 6.53,  10, 'none','none');
-INSERT INTO Auction VALUES(63, '2016-11-27','2016-12-08', 4.53,  11, 'none','none');
-INSERT INTO Auction VALUES(64, '2016-11-27','2016-12-08', 2.25,  11, 'none','none');
-INSERT INTO Auction VALUES(65, '2016-11-27','2016-12-08', 8.42,  11, 'none','none');
-INSERT INTO Auction VALUES(66, '2016-11-27','2016-12-08', 7.25,  38, 'none','none');
-INSERT INTO Auction VALUES(67, '2016-11-27','2016-12-08', 4.53,  39, 'none','none');
-INSERT INTO Auction VALUES(68, '2016-11-27','2016-12-08', 4.25,  40, 'none','none');
-
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5,  1, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 7,  1, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 8.45,  2, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.23,  3, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 4.25,  4, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.25,  4, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.52,  4, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.23,  5, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.63,  6, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.74,  7, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  8, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 4.25,  9, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 3.25,  10, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 2.75,  11, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.25,  12, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  13, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.75,  14, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  15, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.25,  16, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 4.54,  17, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  18, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.75,  19, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  20, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.23,  21, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.36,  22, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.75,  23, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  24, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.53,  25, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  26, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.53,  27, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 7.58,  28, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 9.54,  29, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.55,  30, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.25,  30, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.63,  30, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.25,  31, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.64,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.25,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.64,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.25,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.62,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 0.53,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.32,  32, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.54,  33, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.25,  33, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.63,  33, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 3.42,  34, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.25,  34, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.42,  35, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.25,  36, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 18.25,  37, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 5.25,  37, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 7.42,  37, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 7.23,  37, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 7.32,  37, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 7.63,  5, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 1.23,  6, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 2.25,  7, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 32.25,  8, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 2.25,  9, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 6.53,  10, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 4.53,  11, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 2.25,  11, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 8.42,  11, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 7.25,  38, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 4.53,  39, 'landon',NULL);
+INSERT INTO Auction (startDate, endDate, currentPrice, itemNo, seller, winner) VALUES('2016-11-27','2016-12-08', 4.25,  40, 'landon',NULL);

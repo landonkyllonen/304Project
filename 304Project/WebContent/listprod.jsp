@@ -1,22 +1,54 @@
 <%@ page import="java.sql.*" %>
-<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.*" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
+<%@ page import="dance.*"%>
+<%@ page import="java.net.URLEncoder" %>
 <%@ include file="jdbc.jsp" %>
+<jsp:include page="csss/css.css"/>
 
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>TSLRG</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<style>
-.redtext {
-        color: red;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>TSLRG Auctions</title>
+<script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
 }
-</style>
+</script>
 </head>
-<body>
+
+<body style="background-color:#05060a;">
 
 <%@ include file="header.jsp" %>
+
+<div id="container">
+		<div id="header">
+        
+        <a name="top">
+       	  <h1><img src="images/TSLRG.png" width="450" height="77" /></h1>
+          </a>
+            <h2>COSC 304</h2>
+  </div>
+		<div class="Color" id="menu">
+        	<ul>
+            	<li class="menuitem"><a href="">Home</a></li>
+                <li class="menuitem"><a href="">About</a></li>
+                <li class="menuitem"><a href="">Services</a></li>
+                <li class="menuitem"><a href="">Design</a></li>
+                <li class="menuitem"><a href="">Products</a></li>
+                <li class="menuitem"><a href="">Login</a></li>
+            </ul>
+        </div>
+                
+		<div class="lol" id="content">
+        <div id="content_top" ></div>
+        <div id="content_main" ><h1>Welcome the TSLRG Auctions Online Store!</h1>
+          <p>&nbsp;</p>
 
 
 <%
@@ -51,8 +83,6 @@ if(username!=null&&password!=null){
    	    elements += "<div align=\"right\">" +
 						"<h3 class=\"redtext\">Wrong username or password</h3>"+
 					"</div>"+
-					"<a href=\"profile.jsp?username=" + username +
-					"\">View Profile</a>"+
 							
 					//Login fields
 					"<form method=\"get\" action=\"listprod.jsp\">"+
@@ -80,8 +110,10 @@ if(username!=null&&password!=null){
    		elements += "<div align=\"right\">" +
 						"<h3>Hi, "+username+"!</h3>"+
 					"</div>"+
-					"<a href=\"profile.jsp?username=" + username +
-					"\">View Profile</a>"+
+					"<div align=\"right\">"+
+						"<a href=\"profile.jsp?username=" + username +
+						"\">View Profile</a>"+
+					"</div>"+
 					"<form method=\"get\" action=\"listprod.jsp\">"+
 					"<p align=\"right\">"+
 						"<input type=\"submit\" value=\"Log Out\">"+
@@ -162,7 +194,7 @@ catch (SQLException ex)
 HashMap colors = new HashMap();		// This may be done dynamically as well, a little tricky...
 colors.put("Books", "#0000FF");
 colors.put("Cosmetics", "#FF0000");
-colors.put("Electronics", "#000000");
+colors.put("Electronics", "#FFFF00");
 colors.put("Food", "#6600CC");
 colors.put("Home&Garden", "#55A5B3");
 colors.put("Jewelry", "#FF9900");
@@ -183,23 +215,23 @@ if (hasNameParam && hasCategoryParam)
 {
 	filter = "<h3>Products containing '"+name+"' in category: '"+category+"'</h3>";
 	name = '%'+name+'%';
-	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE name LIKE ? AND category = ?";
+	sql = "SELECT Item.itemNo, name, currentPrice, category, endDate FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE name LIKE ? AND category = ?";
 }
 else if (hasNameParam)
 {
 	filter = "<h3>Products containing '"+name+"'</h3>";
 	name = '%'+name+'%';
-	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE productName LIKE ?";
+	sql = "SELECT * FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE name LIKE ?";
 }
 else if (hasCategoryParam)
 {
 	filter = "<h3>Products in category: '"+category+"'</h3>";
-	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE categoryName = ?";
+	sql = "SELECT * FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE category = ?";
 }
 else
 {
 	filter = "<h3>All Products</h3>";
-	sql = "SELECT Item.itemNo, name, currentPrice, category FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo";
+	sql = "SELECT * FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo";
 }
 
 out.println(filter);
@@ -215,7 +247,7 @@ try
 		pstmt.setString(1, name);	
 		if (hasCategoryParam)
 		{
-			pstmt.setString(2, category);
+	pstmt.setString(2, category);
 		}
 	}
 	else if (hasCategoryParam)
@@ -226,21 +258,30 @@ try
 	ResultSet rst = pstmt.executeQuery();
 	
 	out.print("<font face=\"Century Gothic\" size=\"2\"><table class=\"table\" border=\"1\"><tr><th class=\"col-md-1\"></th><th>Product Name</th>");
-	out.println("<th>Category</th><th>Price</th></tr>");
+	out.println("<th>Category</th><th>Price</th><th>Ending</th></tr>");
 	while (rst.next()) 
 	{
-		out.print("<td class=\"col-md-1\"><a href=\"addcart.jsp?id=" + rst.getInt(1) + "&name=" + rst.getString(2)
-				+ "&price=" + rst.getDouble(3) + "\">Add to Cart</a></td>");
+		String winner = rst.getString(7);
+		if(winner==null){
+			winner="null";
+		}
+		//Form: aucId, start, end, price, itemno, seller, winner, itemno, name, desc, image, category
+		out.print("<td class=\"col-md-1\"><a href=\"itempage.jsp?id=" + URLEncoder.encode(rst.getString(1)) + "&start=" + URLEncoder.encode(rst.getString(2))
+		+ "&end=" + URLEncoder.encode(rst.getString(3)) + "&price=" + URLEncoder.encode(rst.getString(4))
+		+ "&itemNo=" + URLEncoder.encode(rst.getString(5))+ "&seller=" + URLEncoder.encode(rst.getString(6))
+		+ "&winner=" + URLEncoder.encode(winner)+ "&name=" + URLEncoder.encode(rst.getString(9))
+		+ "&desc=" + URLEncoder.encode(rst.getString(10))+ "&image=" + URLEncoder.encode(rst.getString(11))
+		+ "&category=" + URLEncoder.encode(rst.getString(12))+ "\">View Auction</a></td>");
 
-		String itemCategory = rst.getString(4);
+		String itemCategory = rst.getString(12);
 		String color = (String) colors.get(itemCategory);
 		if (color == null)
-			color = "#FFFFFF";
+	color = "#FFFFFF";
 
-		out.println("<td><font color=\"" + color + "\">" + rst.getString(2) + "</font></td>"
-				+ "<td><font color=\"" + color + "\">" + itemCategory + "</font></td>"
-				+ "<td><font color=\"" + color + "\">" + currFormat.format(rst.getDouble(3))
-				+ "</font></td></tr>");
+		out.println("<td><font color=\"" + color + "\">" + rst.getString(9) + "</font></td>"
+		+ "<td><font color=\"" + color + "\">" + itemCategory + "</font></td>"
+		+ "<td><font color=\"" + color + "\">" + currFormat.format(rst.getDouble(4))
+		+ "</font></td><td>"+rst.getString(3)+"</td></tr>");
 	}
 	out.println("</table></font>");
 	closeConnection();
