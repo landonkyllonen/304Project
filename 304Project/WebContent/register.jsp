@@ -37,7 +37,7 @@
         <div id="signup">   
           <h1>Register for Free</h1>
           
-          <form action="listprod.jsp" method="get">
+          <form action="createuser.jsp" method="get">
           
           <div class="container">
             <div class="container">
@@ -53,6 +53,13 @@
               </label>
               <input type="text"required autocomplete="off" name="ln"/>
             </div>
+          </div>
+          
+          <div class="container" >
+            <label>
+              Date of Birth<span class="req">*</span>
+            </label>
+            <input type="text"required autocomplete="off" name="DOB"/>
           </div>
 
           <div class="container" >
@@ -85,12 +92,6 @@
       </div><!-- tab-content -->
       
 </div> <!-- /form -->
-
-<%
-//Try to create a user with these details, if conflicts, notify user, else
-//return to listprod as logged in.
-
-%>
 
 </body>
 </html>

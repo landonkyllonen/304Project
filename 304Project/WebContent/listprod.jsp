@@ -5,11 +5,12 @@
 <%@ page import="dance.*"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ include file="jdbc.jsp" %>
-<jsp:include page="csss/css.css"/>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 <title>TSLRG Auctions</title>
@@ -22,7 +23,7 @@ function MM_preloadImages() { //v3.0
 </script>
 </head>
 
-<body style="background-color:#05060a;">
+<body style="background-color:#FFFFFF;">
 
 <%@ include file="header.jsp" %>
 
@@ -52,6 +53,7 @@ function MM_preloadImages() { //v3.0
 
 
 <%
+
 //Try to get login info, 
 String username = request.getParameter("username");
 String password = request.getParameter("password");
@@ -174,6 +176,7 @@ try
 catch (SQLException ex)
 {       out.println(ex);
 }
+<jsp:include page="csss/css.css"/>
 */
 %>
 
@@ -194,7 +197,8 @@ catch (SQLException ex)
 HashMap colors = new HashMap();		// This may be done dynamically as well, a little tricky...
 colors.put("Books", "#0000FF");
 colors.put("Cosmetics", "#FF0000");
-colors.put("Electronics", "#FFFF00");
+//colors.put("Electronics", "#FFFF00");
+colors.put("Electronics", "#000000");
 colors.put("Food", "#6600CC");
 colors.put("Home&Garden", "#55A5B3");
 colors.put("Jewelry", "#FF9900");

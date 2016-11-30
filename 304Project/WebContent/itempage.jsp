@@ -8,11 +8,24 @@
 <HTML>
 <HEAD>
 <TITLE>This is an auction</TITLE>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<style>
+#itemdetails{
+    display:inline-block;
+    width:300px; /* Adjust this */
+}
+.center-div
+{
+     margin: 0 auto;
+     width: 250px; 
+}
+</style>
 </HEAD>
 <BODY>
 
 <%@ include file="header.jsp" %>
 
+<div class="center-div">
 <%
 // Get the auction clicked
 	@SuppressWarnings({"unchecked"})
@@ -34,10 +47,15 @@
 	Integer quantity = new Integer(1);
 
 	double pr = Double.parseDouble(price);
-		
+	
+	out.print("<img src=\""+image+"\" alt=\"Item Pic\" style=\"width:100px;height:100px;\">");
+	out.print("<h3>"+name+"</h3>");
+	out.print("<h3>Current Bid: $"+price+"</h3>");
+	
 %>
+<H2><A HREF="itempage.jsp?bid=true">Place Bid!</A></H2>
 <H2><A HREF="watchAuction.jsp">Watch this auction</A></H2>
 <H2><A HREF="listprod.jsp?watch=true">Continue Shopping</A></H2>
-</FORM>
+</div>
 </BODY>
 </HTML> 
