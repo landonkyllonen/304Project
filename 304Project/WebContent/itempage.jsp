@@ -73,7 +73,7 @@
 	
 	
 %>
-<H2><A HREF="itempage.jsp?bid=true">Place Bid!</A></H2>
+<H2><A HREF="bid.jsp">Place Bid!</A></H2>
 <H2><A HREF="watchAuction.jsp">Watch this auction</A></H2>
 <H2><A HREF="listprod.jsp?watch=true">Continue Shopping</A></H2>
 </div>

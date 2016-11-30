@@ -58,11 +58,6 @@ function MM_preloadImages() { //v3.0
 String username = request.getParameter("username");
 String password = request.getParameter("password");
 
-
-if(username!=null){
-	
-}
-
 //if logged in, display link to profile, else, 
 //make login elements visible.
 String elements="";
@@ -73,7 +68,7 @@ if(username!=null&&password!=null){
 	                		
     String sql = "SELECT * FROM Users WHERE userID = ? AND password = ?";	
 				      
-    con = DriverManager.getConnection(url, uid, pw);
+    //con = DriverManager.getConnection(url, uid, pw);
    	PreparedStatement pstmt = con.prepareStatement(sql);
    	pstmt.setString(1, username);
    	pstmt.setString(2, password);
@@ -108,6 +103,7 @@ if(username!=null&&password!=null){
 					"</p>"+
 				"</form>";
    	}else{			
+   		session.setAttribute("username", username);
    					//Link to profile and greeting
    		elements += "<div align=\"right\">" +
 						"<h3>Hi, "+username+"!</h3>"+
