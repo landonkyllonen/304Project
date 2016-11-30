@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="dance.AuctionInstance" %>
 
 <HTML>
 <HEAD>
@@ -28,29 +29,48 @@
 <div class="center-div">
 <%
 // Get the auction clicked
+	AuctionInstance sessAuction = (AuctionInstance)session.getAttribute("auction");
 	@SuppressWarnings({"unchecked"})
 
 	NumberFormat currFormat = NumberFormat.getCurrencyInstance();
-	
+	String name, desc, seller, winner, start, end, price, image, category, itemNo, aucID;
 	// Get product information
-	String name = request.getParameter("name");
-	String desc = request.getParameter("desc");
-	String seller = request.getParameter("seller");
-	String winner = request.getParameter("winner");
-	String start = request.getParameter("start");
-	String end = request.getParameter("end");
-	String price = request.getParameter("price");
-	String image = request.getParameter("image");
-	String category = request.getParameter("category");
-	String itemNo = request.getParameter("itemNo");
-	String aucID = request.getParameter("aucID");
-	Integer quantity = new Integer(1);
+	if(sessAuction==null){
+		name = request.getParameter("name");
+		desc = request.getParameter("desc");
+		seller = request.getParameter("seller");
+		winner = request.getParameter("winner");
+		start = request.getParameter("start");
+		end = request.getParameter("end");
+		price = request.getParameter("price");
+		image = request.getParameter("image");
+		category = request.getParameter("category");
+		itemNo = request.getParameter("itemNo");
+		aucID = request.getParameter("aucID");
+		AuctionInstance auction = new AuctionInstance(aucID,start,end,price,itemNo,seller,winner,name,desc,image,category);
+		session.setAttribute("auction", auction);
+	}else{
+		name=sessAuction.getName();
+		desc=sessAuction.getDesc();
+		seller=sessAuction.getSeller();
+		winner=sessAuction.getWinner();
+		start=sessAuction.getStart();
+		end=sessAuction.getEnd();
+		price=sessAuction.getPrice();
+		image=sessAuction.getImage();
+		category=sessAuction.getDesc();
+		itemNo=sessAuction.getItemNo();
+		aucID=sessAuction.getAuctionID();
+		session.setAttribute("auction", sessAuction);
+	}
 
 	double pr = Double.parseDouble(price);
 	
-	out.print("<img src=\""+image+"\" alt=\"Item Pic\" style=\"width:100px;height:100px;\">");
+	out.print("<img src=\""+image+"\" alt=\"Item Pic\" style=\"width:100px;height:100px;\">"+
+	"<h5>End Date: "+end+"</h5><h5>Seller: "+seller+"</h5><h5>Top Bidder: "+winner+"</h5>");
 	out.print("<h3>"+name+"</h3>");
 	out.print("<h3>Current Bid: $"+price+"</h3>");
+	
 	
 %>
 <H2><A HREF="itempage.jsp?bid=true">Place Bid!</A></H2>
