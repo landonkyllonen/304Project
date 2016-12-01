@@ -9,12 +9,11 @@
 <!-- TODO
 AUCTIONS
 	Allow bidding on auctions (auctions you bid on are placed on your watch list)
-	If not logged in, prompt for account creation on bid attempt
 	Allow payment for auctions won
 	Display watch list on view profile link from listprod
 	Allow auction creation(need to allow picture selection)
-	Countdown, smarter end time display
-	Get pictures for items, set them to be loaded from server instead of from url.
+	Countdown, smarter end time display MATT
+	Get pictures for items, set them to be loaded from server instead of from url. LANDON
 PROFILEPAGE
 	Display profile info (#bids, etc)
 	Link from profile page to auctions won, shipping status, purchase history etc
@@ -120,8 +119,11 @@ if(username!=null&&password!=null){
 						"<input type=\"submit\" value=\"Register\">"+
 					"</p>"+
 				"</form>";
-   	}else{			
+   	}else{
+   		rst.next();
+   		int balance = rst.getInt("bidBalance"); 
    		session.setAttribute("username", username);
+   		session.setAttribute("balance", balance);
    					//Link to profile and greeting
    		elements += "<div align=\"right\">" +
 						"<h3>Hi, "+username+"!</h3>"+
@@ -284,12 +286,7 @@ try
 			winner="null";
 		}
 		//Form: aucId, start, end, price, itemno, seller, winner, itemno, name, desc, image, category
-		out.print("<td class=\"col-md-1\"><a href=\"itempage.jsp?id=" + URLEncoder.encode(rst.getString(1)) + "&start=" + URLEncoder.encode(rst.getString(2))
-		+ "&end=" + URLEncoder.encode(rst.getString(3)) + "&price=" + URLEncoder.encode(rst.getString(4))
-		+ "&itemNo=" + URLEncoder.encode(rst.getString(5))+ "&seller=" + URLEncoder.encode(rst.getString(6))
-		+ "&winner=" + URLEncoder.encode(winner)+ "&name=" + URLEncoder.encode(rst.getString(9))
-		+ "&desc=" + URLEncoder.encode(rst.getString(10))+ "&image=" + URLEncoder.encode(rst.getString(11))
-		+ "&category=" + URLEncoder.encode(rst.getString(12))+ "\">View Auction</a></td>");
+		out.print("<td class=\"col-md-1\"><a href=\"itempage.jsp?id=" + URLEncoder.encode(rst.getString(1))+"\">View Auction</a></td>");
 
 		String itemCategory = rst.getString(12);
 		String color = (String) colors.get(itemCategory);

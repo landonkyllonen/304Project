@@ -5,6 +5,8 @@
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="dance.AuctionInstance" %>
+<%@ include file="jdbc.jsp" %>
+
 
 <HTML>
 <HEAD>
@@ -20,6 +22,9 @@
      margin: 0 auto;
      width: 250px; 
 }
+.redtext {
+        color: red;
+}
 </style>
 </HEAD>
 <BODY>
@@ -28,49 +33,60 @@
 
 <div class="center-div">
 <%
-// Get the auction clicked
+// Get the auction clicked or the current sessAuction
 	AuctionInstance sessAuction = (AuctionInstance)session.getAttribute("auction");
-	@SuppressWarnings({"unchecked"})
-
+	String userID = (String)session.getAttribute("username");
+	
+	/* + "&start=" + URLEncoder.encode(rst.getString(2))
+	+ "&end=" + URLEncoder.encode(rst.getString(3)) + "&price=" + URLEncoder.encode(rst.getString(4))
+	+ "&itemNo=" + URLEncoder.encode(rst.getString(5))+ "&seller=" + URLEncoder.encode(rst.getString(6))
+	+ "&winner=" + URLEncoder.encode(winner)+ "&name=" + URLEncoder.encode(rst.getString(9))
+	+ "&desc=" + URLEncoder.encode(rst.getString(10))+ "&image=" + URLEncoder.encode(rst.getString(11))
+	+ "&category=" + URLEncoder.encode(rst.getString(12))+ "\ */
+	
+	//Get auction details on page load, done this way so it can be refreshed.
+	getConnection();
+	String sql = "SELECT * FROM Auction JOIN Item ON Auction.itemNo = Item.itemNo WHERE auctionID = ?";
+	PreparedStatement pstmt=con.prepareStatement(sql);
+	String aucId = request.getParameter("id");
+	pstmt.setInt(1,Integer.parseInt(aucId));
+	ResultSet rst = pstmt.executeQuery();
+	
 	NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 	String name, desc, seller, winner, start, end, price, image, category, itemNo, aucID;
-	// Get product information
-	if(sessAuction==null){
-		name = request.getParameter("name");
-		desc = request.getParameter("desc");
-		seller = request.getParameter("seller");
-		winner = request.getParameter("winner");
-		start = request.getParameter("start");
-		end = request.getParameter("end");
-		price = request.getParameter("price");
-		image = request.getParameter("image");
-		category = request.getParameter("category");
-		itemNo = request.getParameter("itemNo");
-		aucID = request.getParameter("aucID");
-		AuctionInstance auction = new AuctionInstance(aucID,start,end,price,itemNo,seller,winner,name,desc,image,category);
+	
+	if(rst.next()){
+		//Auction exists, load it
+		//Form: aucId, start, end, price, itemno, seller, winner, itemno, name, desc, image, category
+		AuctionInstance auction = new AuctionInstance(rst.getString(1), rst.getString(2),rst.getString(3)
+				,rst.getString(4),rst.getString(5),rst.getString(6),rst.getString(7),rst.getString(9),
+				rst.getString(10),rst.getString(11),rst.getString(12));
+		name = auction.getName();
+		desc = auction.getDesc();
+		seller = auction.getSeller();
+		winner = auction.getWinner();
+		start = auction.getStart();
+		end = auction.getEnd();
+		price = auction.getPrice();
+		image = auction.getImage();
+		category = auction.getCategory();
+		itemNo = auction.getItemNo();
+		aucID = auction.getAuctionID();
+		
 		session.setAttribute("auction", auction);
+		
+		double pr = Double.parseDouble(price);
+		
+		//Display item.
+		out.print("<img src=\""+image+"\" alt=\"Item Pic\" style=\"width:100px;height:100px;\">"+
+		"<h5>End Date: "+end+"</h5><h5>Seller: "+seller+"</h5><h5>Top Bidder: "+winner+"</h5>");
+		out.print("<h3>"+name+"</h3>");
+		out.print("<h3>"+desc+"</h3>");
+		out.print("<h3>Current Bid: $"+price+"</h3>");
 	}else{
-		name=sessAuction.getName();
-		desc=sessAuction.getDesc();
-		seller=sessAuction.getSeller();
-		winner=sessAuction.getWinner();
-		start=sessAuction.getStart();
-		end=sessAuction.getEnd();
-		price=sessAuction.getPrice();
-		image=sessAuction.getImage();
-		category=sessAuction.getDesc();
-		itemNo=sessAuction.getItemNo();
-		aucID=sessAuction.getAuctionID();
-		session.setAttribute("auction", sessAuction);
+		//Display item not found
+		out.print("<h3 class=\"redtext\">That auction does not exist.</h3>");
 	}
-
-	double pr = Double.parseDouble(price);
-	
-	out.print("<img src=\""+image+"\" alt=\"Item Pic\" style=\"width:100px;height:100px;\">"+
-	"<h5>End Date: "+end+"</h5><h5>Seller: "+seller+"</h5><h5>Top Bidder: "+winner+"</h5>");
-	out.print("<h3>"+name+"</h3>");
-	out.print("<h3>Current Bid: $"+price+"</h3>");
-	
 	
 %>
 <H2><A HREF="bid.jsp">Place Bid!</A></H2>

@@ -38,6 +38,9 @@ if (error!=null&&!error.equalsIgnoreCase("")){
 		case "taken":
 			out.print("<h3 class=\"redtext\">Username or email already in use.</h3>");
 			break;
+		case "register":
+			out.print("<h3 class=\"redtext\">You must be a member to bid, please register now, or log in from the main page.</h3>");
+			break;		
 		default:
 			break;
 	}
