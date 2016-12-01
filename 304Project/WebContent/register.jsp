@@ -31,6 +31,21 @@
 
 <%@ include file="header.jsp" %>
 
+<%
+String error = request.getParameter("error");
+if (error!=null&&!error.equalsIgnoreCase("")){
+	switch(error){
+		case "taken":
+			out.print("<h3 class=\"redtext\">Username or email already in use.</h3>");
+			break;
+		default:
+			break;
+	}
+}
+
+
+%>
+
 <div class="form">
       
       <div class="center-div">

@@ -6,7 +6,25 @@
 <%@ page import="java.net.URLEncoder" %>
 <%@ include file="jdbc.jsp" %>
 
-
+<!-- TODO
+AUCTIONS
+	Allow bidding on auctions (auctions you bid on are placed on your watch list)
+	If not logged in, prompt for account creation on bid attempt
+	Allow payment for auctions won
+	Display watch list on view profile link from listprod
+	Allow auction creation(need to allow picture selection)
+	Countdown, smarter end time display
+	Get pictures for items, set them to be loaded from server instead of from url.
+PROFILEPAGE
+	Display profile info (#bids, etc)
+	Link from profile page to auctions won, shipping status, purchase history etc
+	Optional: Add option to change password
+MANAGER
+	Generate reports
+	Recover system(ddl already in place, link button to file that executes it)
+	Change details/remove auction.
+	
+ -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,7 +41,7 @@ function MM_preloadImages() { //v3.0
 </script>
 </head>
 
-<body style="background-color:#FFFFFF;">
+<body style="background-color:#000000;">
 
 <%@ include file="header.jsp" %>
 
@@ -193,8 +211,8 @@ catch (SQLException ex)
 HashMap colors = new HashMap();		// This may be done dynamically as well, a little tricky...
 colors.put("Books", "#0000FF");
 colors.put("Cosmetics", "#FF0000");
-//colors.put("Electronics", "#FFFF00");
-colors.put("Electronics", "#000000");
+colors.put("Electronics", "#FFFF00");
+//colors.put("Electronics", "#000000");
 colors.put("Food", "#6600CC");
 colors.put("Home&Garden", "#55A5B3");
 colors.put("Jewelry", "#FF9900");
@@ -215,7 +233,7 @@ if (hasNameParam && hasCategoryParam)
 {
 	filter = "<h3>Products containing '"+name+"' in category: '"+category+"'</h3>";
 	name = '%'+name+'%';
-	sql = "SELECT Item.itemNo, name, currentPrice, category, endDate FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE name LIKE ? AND category = ?";
+	sql = "SELECT * FROM Auction JOIN Item ON Auction.itemNo=Item.itemNo WHERE name LIKE ? AND category = ?";
 }
 else if (hasNameParam)
 {

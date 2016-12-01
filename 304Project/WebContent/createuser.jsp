@@ -4,31 +4,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <%@ include file="jdbc.jsp" %>
 
-<html>
-<head>
-<title>TSLRG</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<style>
-   .container {
-        width: 500px;
-        clear: both;
-    }
-    .container input {
-        width: 100%;
-        clear: both;
-    }
-.center-div
-{
-     margin: 0 auto;
-     width: 250px; 
-}
-.redtext {
-        color: red;
-}
-</style>
-</head>
-<body>
-
 <%
 String firstname = request.getParameter("fn");
 String lastname = request.getParameter("ln");
@@ -40,7 +15,32 @@ int startingBids=0;
 String perms = "user";
 //Try to create a user with these details, if conflicts, notify user, else
 //return to listprod as logged in.
-
+getConnection();
+String sql="SELECT * FROM Users WHERE email=? OR userID = ?";
+PreparedStatement pstmt=con.prepareStatement(sql);
+pstmt.setString(1,email);
+pstmt.setString(2,username);
+ResultSet rst = pstmt.executeQuery();
+//If no result
+if(rst.next()==false){
+	//Create user on database, forward to listprod and login.
+	sql="INSERT INTO Users VALUES (?,?,?,?,?,?,?,?)";
+	pstmt = con.prepareStatement(sql);
+	pstmt.setString(1,username);
+	pstmt.setString(2,password);
+	pstmt.setString(3,firstname);
+	pstmt.setString(4,lastname);
+	pstmt.setString(5,email);
+	pstmt.setString(6,DOB);
+	pstmt.setInt(7,startingBids);
+	pstmt.setString(8,firstname);
+	pstmt.executeUpdate();
+	
+	response.sendRedirect("listprod.jsp?username="+username+"&password="+password);
+}else{
+	//Return to register page with error
+	response.sendRedirect("register.jsp?error=taken");
+}
 %>
 
 </body>
