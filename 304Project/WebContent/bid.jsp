@@ -46,13 +46,23 @@
 		PreparedStatement pstmt4 = con.prepareStatement(sql4);
 		pstmt4.setString(1, auction.getAuctionID());
 		pstmt4.executeQuery();
-		//and adds item to watchlist
-		String sql5="INSERT INTO watches VALUES(?,?)";
-		PreparedStatement pstmt5 = con.prepareStatement(sql5);
-		pstmt5.setString(1,userID);
-		pstmt5.setInt(2,Integer.parseInt(auction.getAuctionID()));
-		pstmt5.executeUpdate();
-		System.out.println("added to watchlist");
+		//and if not already watching, watch this auction
+		String check = "SELECT * FROM watches WHERE userID = ? AND auctionID = ?";
+		PreparedStatement checking = con.prepareStatement(check);
+		checking.setString(1, userID);
+		checking.setInt(2, Integer.parseInt(auction.getAuctionID()));
+		ResultSet res = checking.executeQuery();
+		if(!res.next()){
+			String sql5="INSERT INTO watches VALUES(?,?)";
+			PreparedStatement pstmt5 = con.prepareStatement(sql5);
+			pstmt5.setString(1,userID);
+			pstmt5.setInt(2,Integer.parseInt(auction.getAuctionID()));
+			pstmt5.executeUpdate();
+			System.out.println("added to watchlist");
+		}else{
+			System.out.println("Already in watchlist");
+		}
+		
 		
 		response.sendRedirect("itempage.jsp?bid=success&id="+auction.getAuctionID());
 	}

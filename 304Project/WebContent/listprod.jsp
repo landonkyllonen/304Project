@@ -70,10 +70,31 @@ function MM_preloadImages() { //v3.0
 
 
 <%
+//Determine what user is trying to do
+String action = request.getParameter("action");
+if(action!=null){
+	session.removeAttribute("username");
+	session.removeAttribute("password");
+	//Can use this for more actions, right now action only 1 value, simpler to remove if action not null
+	/* switch(action){
+		case "logout":
+			session.removeAttribute("username");
+			session.removeAttribute("password");
+			break;
+		default:
+			break;
+	} */
+}
+
 
 //Try to get login info, 
 String username = request.getParameter("username");
 String password = request.getParameter("password");
+//If not trying to log in, check if should already be logged in.
+if(username==null&&password==null){
+	username = (String)session.getAttribute("username");
+	password = (String)session.getAttribute("password");
+}
 
 //if logged in, display link to profile, else, 
 //make login elements visible.
@@ -123,6 +144,7 @@ if(username!=null&&password!=null){
    		rst.next();
    		int balance = rst.getInt("bidBalance"); 
    		session.setAttribute("username", username);
+   		session.setAttribute("password", password);
    		session.setAttribute("balance", balance);
    					//Link to profile and greeting
    		elements += "<div align=\"right\">" +
@@ -132,13 +154,10 @@ if(username!=null&&password!=null){
 						"<a href=\"profile.jsp?username=" + username +
 						"\">View Profile</a>"+
 					"</div>"+
-					"<form method=\"get\" action=\"listprod.jsp\">"+
-					"<p align=\"right\">"+
-						"<input type=\"submit\" value=\"Log Out\">"+
-					"</p>"+
-				"</form>";
+					"<div align=\"right\">"+
+						"<a href=\"listprod.jsp?action=logout=\">Log Out</a>"+
+					"</div>";
    	}
-   	
 	out.print(elements);
 	
 }else{
