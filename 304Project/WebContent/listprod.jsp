@@ -8,17 +8,13 @@
 
 <!-- TODO
 AUCTIONS
-	Allow bidding on auctions (auctions you bid on are placed on your watch list)
-	Allow payment for auctions won
-	Display watch list on view profile link from listprod
-	Allow auction creation(need to allow picture selection)
+	Incorporate payment methods and receipts to make paying for bids not superficial
 	Countdown, smarter end time display MATT
-	Get pictures for items, set them to be loaded from server instead of from url. LANDON
+	Get pictures for items, not loading from online url or local, idk.
 PROFILEPAGE
-	Display profile info (#bids, etc)
 	Link from profile page to auctions won, shipping status, purchase history etc
 	Optional: Add option to change password
-MANAGER
+MANAGER ##IMPORTANT AS BASELINE##
 	Generate reports
 	Recover system(ddl already in place, link button to file that executes it)
 	Change details/remove auction.
