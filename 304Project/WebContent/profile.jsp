@@ -54,12 +54,10 @@ function MM_preloadImages() { //v3.0
   </div>
 		<div class="Color" id="menu">
         	<ul>
-            	<li class="menuitem"><a href="">Home</a></li>
+            	<li class="menuitem"><a href="listprod.jsp">Products</a></li>
                 <li class="menuitem"><a href="">About</a></li>
                 <li class="menuitem"><a href="">Services</a></li>
                 <li class="menuitem"><a href="">Design</a></li>
-                <li class="menuitem"><a href="listprods.jsp">Products</a></li>
-                <li class="menuitem"><a href="showcart.jsp">Cart</a></li>
             </ul>
         </div>
                 
@@ -116,8 +114,8 @@ function MM_preloadImages() { //v3.0
 	HashMap colors = new HashMap();		// This may be done dynamically as well, a little tricky...
 	colors.put("Books", "#0000FF");
 	colors.put("Cosmetics", "#FF0000");
-	//colors.put("Electronics", "#FFFF00");
-	colors.put("Electronics", "#000000");
+	colors.put("Electronics", "#FFFF00");
+	//colors.put("Electronics", "#000000");
 	colors.put("Food", "#6600CC");
 	colors.put("Home&Garden", "#55A5B3");
 	colors.put("Jewelry", "#FF9900");
@@ -154,7 +152,10 @@ function MM_preloadImages() { //v3.0
 	
 	while (tablerows2.next()) 
 	{
-		String winner = tablerows2.getString(5);
+		String winner = tablerows2.getString(6);
+		if(winner==null){
+			winner = "No bids";
+		}
 		//Form: name, category, currentPrice, endDate, auctionID, winner
 		out.print("<td class=\"col-md-1\"><a href=\"itempage.jsp?id=" + URLEncoder.encode(tablerows2.getString(5))+"\">View Auction</a></td>");
 
@@ -166,7 +167,7 @@ function MM_preloadImages() { //v3.0
 		out.println("<td><font color=\"" + color + "\">" + tablerows2.getString(1) + "</font></td>"
 		+ "<td><font color=\"" + color + "\">" + itemCategory + "</font></td>"
 		+ "<td><font color=\"" + color + "\">" + currFormat.format(Double.parseDouble(tablerows2.getString(3)))
-		+ "</font></td><td>"+tablerows2.getString(4)+"</td><td>"+tablerows2.getString(6)+"</td></tr>");
+		+ "</font></td><td>"+tablerows2.getString(4)+"</td><td>"+winner+"</td></tr>");
 	}
 	out.println("</table></font>");
 	closeConnection();

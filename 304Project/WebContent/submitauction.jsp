@@ -17,7 +17,7 @@
 String path = request.getParameter("fileupload");
 String name = request.getParameter("name");
 String desc = request.getParameter("desc");
-String category = request.getParameter("itemCategory");
+String category = request.getParameter("categoryName");
 //Get date
 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 Date date = new Date();

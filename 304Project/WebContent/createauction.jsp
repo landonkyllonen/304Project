@@ -53,12 +53,10 @@ function MM_preloadImages() { //v3.0
   </div>
 		<div class="Color" id="menu">
         	<ul>
-            	<li class="menuitem"><a href="">Home</a></li>
+            	<li class="menuitem"><a href="listprod.jsp">Products</a></li>
                 <li class="menuitem"><a href="">About</a></li>
                 <li class="menuitem"><a href="">Services</a></li>
                 <li class="menuitem"><a href="">Design</a></li>
-                <li class="menuitem"><a href="listprods.jsp">Products</a></li>
-                <li class="menuitem"><a href="showcart.jsp">Cart</a></li>
             </ul>
         </div>
                 
