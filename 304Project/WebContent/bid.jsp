@@ -63,7 +63,7 @@
 			System.out.println("Already in watchlist");
 		}
 		
-		
+		closeConnection();
 		response.sendRedirect("itempage.jsp?bid=success&id="+auction.getAuctionID());
 	}
 	

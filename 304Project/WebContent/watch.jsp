@@ -17,6 +17,7 @@
 		if(rst.next()){
 			//return to itempage with error
 			System.out.println("Already watching");
+			closeConnection();
 			response.sendRedirect("itempage.jsp?bid=failedwatch");
 		}else{
 			//add to server, return to itempage with success
@@ -25,6 +26,7 @@
 			insert.setString(1, userID);
 			insert.setInt(2, aucID);
 			insert.executeUpdate();
+			closeConnection();
 			response.sendRedirect("itempage.jsp?bid=watch");
 		}
 	

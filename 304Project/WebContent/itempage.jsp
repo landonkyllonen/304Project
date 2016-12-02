@@ -109,6 +109,7 @@
 	out.print("<H2><A HREF=\"bid.jsp\">Place Bid!</A></H2>"+
 			"<H2><A HREF=\"watch.jsp?aucID="+auction.getAuctionID()+"&userID="+userID+"\">Watch this auction</A></H2>"+
 			"<H2><A HREF=\"listprod.jsp?watch=true\">Continue Shopping</A></H2>");
+	closeConnection();
 %>
 </div>
 </BODY>

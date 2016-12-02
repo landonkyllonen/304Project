@@ -35,10 +35,11 @@ if(rst.next()==false){
 	pstmt.setInt(7,startingBids);
 	pstmt.setString(8,firstname);
 	pstmt.executeUpdate();
-	
+	closeConnection();
 	response.sendRedirect("listprod.jsp?username="+username+"&password="+password);
 }else{
 	//Return to register page with error
+	closeConnection();
 	response.sendRedirect("register.jsp?error=taken");
 }
 %>
