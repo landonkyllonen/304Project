@@ -48,12 +48,10 @@ function MM_preloadImages() { //v3.0
   </div>
 		<div class="Color" id="menu">
         	<ul>
-            	<li class="menuitem"><a href="">Home</a></li>
+            	<li class="menuitem"><a href="listprod.jsp">Products</a></li>
                 <li class="menuitem"><a href="">About</a></li>
                 <li class="menuitem"><a href="">Services</a></li>
                 <li class="menuitem"><a href="">Design</a></li>
-                <li class="menuitem"><a href="listprods.jsp">Products</a></li>
-                <li class="menuitem"><a href="showcart.jsp">Cart</a></li>
             </ul>
         </div>
                 
@@ -138,9 +136,11 @@ if(username!=null&&password!=null){
    	}else{
    		rst.next();
    		int balance = rst.getInt("bidBalance"); 
+   		String permissions = rst.getString("permissions");
    		session.setAttribute("username", username);
    		session.setAttribute("password", password);
    		session.setAttribute("balance", balance);
+   		session.setAttribute("perms", permissions);
    					//Link to profile and greeting
    		elements += "<div align=\"right\">" +
 						"<h3>Hi, "+username+"!</h3>"+

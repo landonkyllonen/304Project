@@ -93,6 +93,19 @@ function MM_preloadImages() { //v3.0
 	out.print("<h2>"+fn+" "+ln+"'s Profile</h2>");
 	out.print("<h3>Your bid balance:"+bidBalance+"</h3>");
 	
+	String perms = (String)session.getAttribute("perms");
+	if(perms!=null){
+		switch(perms){
+			case "admin":
+				out.print("<p></p>");
+				out.print("<a href=\"manage.jsp\">Manager Options</a>");
+				out.print("<p></p>");
+				break;
+			default:
+				break;
+		}
+	}
+	
 	out.print("<p></p>");
 	out.print("<a href=\"purchasebids.jsp\">Buy more bids!</a>");
 	out.print("<p></p>");

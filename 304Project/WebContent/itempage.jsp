@@ -122,7 +122,7 @@ function MM_preloadImages() { //v3.0
 					out.print("<h3 class=\"redtext\">You are already watching this auction.</h3>");
 					break;
 				case "watch":
-					out.print("<h3 class=\"redtext\">You are already watching this auction.</h3>");
+					out.print("<h3 class=\"greentext\">You are now watching this auction.</h3>");
 					break;
 				default:
 					break;
