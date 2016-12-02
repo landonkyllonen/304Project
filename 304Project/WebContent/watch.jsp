@@ -22,7 +22,7 @@
 		}else{
 			//add to server, return to itempage with success
 			String sql="INSERT INTO watches VALUES (?,?)";
-			PreparedStatement insert = con.prepareStatement(check);
+			PreparedStatement insert = con.prepareStatement(sql);
 			insert.setString(1, userID);
 			insert.setInt(2, aucID);
 			insert.executeUpdate();

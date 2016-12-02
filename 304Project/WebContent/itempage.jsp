@@ -97,6 +97,9 @@ function MM_preloadImages() { //v3.0
 		desc = auction.getDesc();
 		seller = auction.getSeller();
 		winner = auction.getWinner();
+		if (winner==null){
+			winner = "No bids.";
+		}
 		start = auction.getStart();
 		end = auction.getEnd();
 		price = auction.getPrice();

@@ -72,7 +72,7 @@ ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
 Create Table Receipt(
-	invoiceNo INT,
+	invoiceNo INT IDENTITY(1,1),
 	auctionID INT,
 	finalSalesPercentage Decimal (2,2),
 	auctionFee Decimal (5,2),

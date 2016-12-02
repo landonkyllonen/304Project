@@ -68,8 +68,13 @@ function MM_preloadImages() { //v3.0
 
 <div class="center-div">
 <%
+	String purchase = request.getParameter("purchase");
+	int purchased = 0;
 	if(request.getParameter("created")!=null){
 		out.print("<h3 class=\"greentext\">Auction successfully created!</h3>");
+	}else if(purchase!=null){
+		purchased = Integer.parseInt(purchase);
+		out.print("<h3 class=\"greentext\">Thank you for your purchase of "+purchased+" bids!</h3>");
 	}
 // Get user details
 	String userID = (String)session.getAttribute("username");
@@ -87,6 +92,10 @@ function MM_preloadImages() { //v3.0
 	
 	out.print("<h2>"+fn+" "+ln+"'s Profile</h2>");
 	out.print("<h3>Your bid balance:"+bidBalance+"</h3>");
+	
+	out.print("<p></p>");
+	out.print("<a href=\"purchasebids.jsp\">Buy more bids!</a>");
+	out.print("<p></p>");
 	
 	out.print("<p></p>");
 	out.print("<a href=\"createauction.jsp?username=" + userID +
@@ -123,7 +132,10 @@ function MM_preloadImages() { //v3.0
 	
 	while (tablerows.next()) 
 	{
-		String winner = tablerows.getString(5);
+		String winner = tablerows.getString(6);
+		if(winner==null){
+			winner = "No bids";
+		}
 		//Form: name, category, currentPrice, endDate, auctionID, winner
 		out.print("<td class=\"col-md-1\"><a href=\"itempage.jsp?id=" + URLEncoder.encode(tablerows.getString(5))+"\">View Auction</a></td>");
 
@@ -135,7 +147,7 @@ function MM_preloadImages() { //v3.0
 		out.println("<td><font color=\"" + color + "\">" + tablerows.getString(1) + "</font></td>"
 		+ "<td><font color=\"" + color + "\">" + itemCategory + "</font></td>"
 		+ "<td><font color=\"" + color + "\">" + currFormat.format(Double.parseDouble(tablerows.getString(3)))
-		+ "</font></td><td>"+tablerows.getString(4)+"</td><td>"+tablerows.getString(6)+"</td></tr>");
+		+ "</font></td><td>"+tablerows.getString(4)+"</td><td>"+winner+"</td></tr>");
 	}
 	out.println("</table></font>");
 	
