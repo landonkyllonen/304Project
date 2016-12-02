@@ -33,7 +33,7 @@ Create Table Ticket (
 );
 
 Create Table Item (
-	itemNo INT,
+	itemNo INT IDENTITY(1,1),
 	name VARCHAR(100),
 	description VARCHAR(100),
 	image VARCHAR(200),
@@ -146,46 +146,46 @@ REFERENCES Auction(auctionID)
 ON UPDATE CASCADE ON DELETE NO ACTION
 );
 
-INSERT Item VALUES(1,'Galaxy S2', 'Stock Phone Details', 1, 'Electronics');
-INSERT Item VALUES(2, 'Android Charge Cable', 'Quick charging', 2, 'Electronics');
-INSERT Item VALUES(3, 'Gold Watch','14k Gold', 3, 'Jewelry');
-INSERT Item VALUES(4, 'Womens Necklace', 'Sterling Silver', 4, 'Jewelry');
-INSERT Item VALUES(5, 'Diamond ring','Diamonds', 5, 'Jewelry');
-INSERT Item VALUES(6, 'Gold Ring','Gold', 6, 'Jewelry');
-INSERT Item VALUES(7, 'Gold Bar','Gold', 7, 'Jewelry');
-INSERT Item VALUES(8, 'Gold Toilet','Gold', 8, 'Jewelry');
-INSERT Item VALUES(9, 'Gold Foil','Gold', 9, 'Jewelry');
-INSERT Item VALUES(10, 'Gold Wire','Gold', 10, 'Jewelry');
-INSERT Item VALUES(11, 'Gold Tooth','Gold', 11, 'Jewelry');
-INSERT Item VALUES(12, 'Gold Chain','Gold', 12, 'Jewelry');
-INSERT Item VALUES(13, 'Smart watch','pretty cool', 13, 'Electronics');
-INSERT Item VALUES(14, 'Drone','Spy drone', 14, 'Electronics');
-INSERT Item VALUES(15, 'Pebble Qi Charger','wireless', 15, 'Electronics');
-INSERT Item VALUES(16, 'Alarm Clock', 'cant wake up', 16, 'Electronics');
-INSERT Item VALUES(17, 'Golf balls','hit em', 17, 'Sports');
-INSERT Item VALUES(18, 'Golf clubs','use em for the balls', 18, 'Sports');
-INSERT Item VALUES(19, 'Soccer Ball','kick it', 19, 'Sports');
-INSERT Item VALUES(20, 'Volleyball Net','For volleyball', 20, 'Sports');
-INSERT Item VALUES(21, 'Badminton Set','For badminton', 21, 'Sports');
-INSERT Item VALUES(22, 'Yoga mat','for yoga', 22, 'Sports');
-INSERT Item VALUES(23, 'Skis','for skiing', 23, 'Sports');
-INSERT Item VALUES(24, 'Ski Poles','for skis', 24, 'Sports');
-INSERT Item VALUES(25, 'Boxing Gloves','punch people with them', 25, 'Sports');
-INSERT Item VALUES(26, 'Blush','for your face', 26, 'Cosmetics');
-INSERT Item VALUES(27, 'Eyeliner','also for your face', 27, 'Cosmetics');
-INSERT Item VALUES(28, 'Foundation','also for your face', 28, 'Cosmetics');
-INSERT Item VALUES(29, 'Brush Set','for makeup application', 29, 'Cosmetics');
-INSERT Item VALUES(30, 'Trowel','for gardening', 30, 'Home&Garden');
-INSERT Item VALUES(31, 'Wire Fencing','for gardening', 31, 'Home&Garden');
-INSERT Item VALUES(32, 'Watering Can','for gardening', 32, 'Home&Garden');
-INSERT Item VALUES(33, 'Hose','30ft', 33, 'Home&Garden');
-INSERT Item VALUES(34, 'Harry Potter and the Treacherous Crawlspace','Best Seller', 34, 'Books');
-INSERT Item VALUES(35,'Grandma''s Boysenberry Spread','Tasty', 35,'Food');
-INSERT Item VALUES(36,'Uncle Bob''s Organic Dried Pears','He just leaves them in his shed', 36,'Food');
-INSERT Item VALUES(37,'Northwoods Cranberry Sauce','Personally not a fan', 37,'Food');
-INSERT Item VALUES(38,'Mishi Kobe Niku','Meat/Poultry', 38,'Food');
-INSERT Item VALUES(39,'Ikura','Seafood', 39, 'Food');
-INSERT Item VALUES(40,'Queso Cabrales','Dairy Products', 40,'Food');
+INSERT Item VALUES('Galaxy S2', 'Stock Phone Details', 1, 'Electronics');
+INSERT Item VALUES('Android Charge Cable', 'Quick charging', 2, 'Electronics');
+INSERT Item VALUES('Gold Watch','14k Gold', 3, 'Jewelry');
+INSERT Item VALUES('Womens Necklace', 'Sterling Silver', 4, 'Jewelry');
+INSERT Item VALUES('Diamond ring','Diamonds', 5, 'Jewelry');
+INSERT Item VALUES('Gold Ring','Gold', 6, 'Jewelry');
+INSERT Item VALUES('Gold Bar','Gold', 7, 'Jewelry');
+INSERT Item VALUES('Gold Toilet','Gold', 8, 'Jewelry');
+INSERT Item VALUES('Gold Foil','Gold', 9, 'Jewelry');
+INSERT Item VALUES('Gold Wire','Gold', 10, 'Jewelry');
+INSERT Item VALUES('Gold Tooth','Gold', 11, 'Jewelry');
+INSERT Item VALUES('Gold Chain','Gold', 12, 'Jewelry');
+INSERT Item VALUES('Smart watch','pretty cool', 13, 'Electronics');
+INSERT Item VALUES('Drone','Spy drone', 14, 'Electronics');
+INSERT Item VALUES('Pebble Qi Charger','wireless', 15, 'Electronics');
+INSERT Item VALUES('Alarm Clock', 'cant wake up', 16, 'Electronics');
+INSERT Item VALUES('Golf balls','hit em', 17, 'Sports');
+INSERT Item VALUES('Golf clubs','use em for the balls', 18, 'Sports');
+INSERT Item VALUES('Soccer Ball','kick it', 19, 'Sports');
+INSERT Item VALUES('Volleyball Net','For volleyball', 20, 'Sports');
+INSERT Item VALUES('Badminton Set','For badminton', 21, 'Sports');
+INSERT Item VALUES('Yoga mat','for yoga', 22, 'Sports');
+INSERT Item VALUES('Skis','for skiing', 23, 'Sports');
+INSERT Item VALUES('Ski Poles','for skis', 24, 'Sports');
+INSERT Item VALUES('Boxing Gloves','punch people with them', 25, 'Sports');
+INSERT Item VALUES('Blush','for your face', 26, 'Cosmetics');
+INSERT Item VALUES('Eyeliner','also for your face', 27, 'Cosmetics');
+INSERT Item VALUES('Foundation','also for your face', 28, 'Cosmetics');
+INSERT Item VALUES('Brush Set','for makeup application', 29, 'Cosmetics');
+INSERT Item VALUES('Trowel','for gardening', 30, 'Home&Garden');
+INSERT Item VALUES('Wire Fencing','for gardening', 31, 'Home&Garden');
+INSERT Item VALUES('Watering Can','for gardening', 32, 'Home&Garden');
+INSERT Item VALUES('Hose','30ft', 33, 'Home&Garden');
+INSERT Item VALUES('Harry Potter and the Treacherous Crawlspace','Best Seller', 34, 'Books');
+INSERT Item VALUES('Grandma''s Boysenberry Spread','Tasty', 35,'Food');
+INSERT Item VALUES('Uncle Bob''s Organic Dried Pears','He just leaves them in his shed', 36,'Food');
+INSERT Item VALUES('Northwoods Cranberry Sauce','Personally not a fan', 37,'Food');
+INSERT Item VALUES('Mishi Kobe Niku','Meat/Poultry', 38,'Food');
+INSERT Item VALUES('Ikura','Seafood', 39, 'Food');
+INSERT Item VALUES('Queso Cabrales','Dairy Products', 40,'Food');
 
 INSERT INTO Users VALUES ('landon', 'mypass', 'Landon', 'Kyllonen', 'LandonKyllonen@hotmail.com','1993-05-06', 100, 'admin');
 INSERT INTO Users VALUES ('matt', 'mypass', 'Landon', 'Kyllonen', 'someemail1@hotmail.com','1993-05-06', 100, 'admin');
