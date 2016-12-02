@@ -9,10 +9,19 @@
 <%@ include file="jdbc.jsp" %>
 
 
-<HTML>
-<HEAD>
-<TITLE>Your Profile</TITLE>
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>TSLRG Auctions</title>
+<script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
 <style>
 #itemdetails{
     display:inline-block;
@@ -30,10 +39,34 @@
         color: green;
 }
 </style>
-</HEAD>
-<BODY>
+</head>
 
-<%@ include file="header.jsp" %>
+
+
+<body style="background-color:#05060a;">
+<div id="container">
+		<div id="header">
+        
+        <a name="top">
+       	  <h1><img src="images/TSLRG.png" width="450" height="77" /></h1>
+          </a>
+            <h2>COSC 304</h2>
+  </div>
+		<div class="Color" id="menu">
+        	<ul>
+            	<li class="menuitem"><a href="">Home</a></li>
+                <li class="menuitem"><a href="">About</a></li>
+                <li class="menuitem"><a href="">Services</a></li>
+                <li class="menuitem"><a href="">Design</a></li>
+                <li class="menuitem"><a href="listprods.jsp">Products</a></li>
+                <li class="menuitem"><a href="showcart.jsp">Cart</a></li>
+            </ul>
+        </div>
+                
+		<div class="lol" id="content">
+        <div id="content_top" ></div>
+        <div id="content_main" ><h1>Welcome the TSLRG Auctions Online Store!</h1>
+          <p>&nbsp;</p>
 
 <div class="center-div">
 <%
@@ -60,6 +93,10 @@
 	out.print("<p></p>");
 	out.print("<a href=\"createauction.jsp?username=" + userID +
 			"\">Create your own auction!</a>");
+	out.print("<p></p>");
+	
+	out.print("<p></p>");
+	out.print("<a href=\"listprod.jsp\">Back to auctions</a>");
 	out.print("<p></p>");
 	
 	out.print("<h2>Here are the auctions you are currently watching:</h2>");
@@ -134,6 +171,12 @@
 	out.println("</table></font>");
 	closeConnection();
 %>
-</div>
-</BODY>
-</HTML> 
+<p>&nbsp;</p>
+<p class="CenterTag"><a href="#top">Back to Top          </a></p>
+        </div>
+        <div id="content_bottom" align="center"></div>
+	  </div>
+   </div>
+</body>
+
+</html>

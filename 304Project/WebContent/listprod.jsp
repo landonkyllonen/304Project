@@ -27,7 +27,6 @@ MANAGER
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 <title>TSLRG Auctions</title>
@@ -40,10 +39,9 @@ function MM_preloadImages() { //v3.0
 </script>
 </head>
 
-<body style="background-color:#000000;">
 
-<%@ include file="header.jsp" %>
 
+<body style="background-color:#05060a;">
 <div id="container">
 		<div id="header">
         
@@ -58,8 +56,8 @@ function MM_preloadImages() { //v3.0
                 <li class="menuitem"><a href="">About</a></li>
                 <li class="menuitem"><a href="">Services</a></li>
                 <li class="menuitem"><a href="">Design</a></li>
-                <li class="menuitem"><a href="">Products</a></li>
-                <li class="menuitem"><a href="">Login</a></li>
+                <li class="menuitem"><a href="listprods.jsp">Products</a></li>
+                <li class="menuitem"><a href="showcart.jsp">Cart</a></li>
             </ul>
         </div>
                 
@@ -67,6 +65,7 @@ function MM_preloadImages() { //v3.0
         <div id="content_top" ></div>
         <div id="content_main" ><h1>Welcome the TSLRG Auctions Online Store!</h1>
           <p>&nbsp;</p>
+
 
 
 <%
@@ -324,6 +323,13 @@ try
 }
 %>
 
-</body>
-</html>
 
+<p>&nbsp;</p>
+<p class="CenterTag"><a href="#top">Back to Top          </a></p>
+        </div>
+        <div id="content_bottom" align="center"></div>
+	  </div>
+   </div>
+</body>
+
+</html>
