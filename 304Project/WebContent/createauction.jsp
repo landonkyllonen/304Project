@@ -92,7 +92,7 @@ function MM_preloadImages() { //v3.0
               <label>
                 Item Description<span class="req">*</span>
               </label>
-              <input type="text"required autocomplete="off" name="desc" size="100" maxlength="1000"/>
+              <input type="text"required autocomplete="off" name="desc" size="50" maxlength="1000"/>
             </div>
 
           <br></br>
